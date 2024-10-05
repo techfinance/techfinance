@@ -11,13 +11,13 @@
         <h1>Login</h1>
         <form>
             <div class="mb-4">
-                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <label for="exampleInputEmail1" class="form-label" name="email">Email</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                <div id="emailHelp" class="form-text">Não compartilhe o seu e-mail com ninguém.</div>
+                <div id="emailHelp" class="form-text" maxlength="100">Não compartilhe o seu e-mail com ninguém.</div>
             </div>
             <div class="mb-4">
-                <label for="exampleInputPassword1" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" required>
+                <label for="exampleInputPassword1" class="form-label" name="senha">Senha</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" maxlength="30" required >
             </div>
             <button type="submit" class="btn" style="margin: auto; margin-top: 40px;">Entrar</button>
         </form>

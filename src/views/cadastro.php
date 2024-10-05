@@ -12,20 +12,20 @@
         <form>
             <div class="mb-4">
                 <label for="exampleInputPassword1" class="form-label">Nome</label>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" maxlength="100" name="nome" required>
             </div>
             <div class="mb-4">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" aria-describedby="emailHelp" required>
+                <input type="email" class="form-control" aria-describedby="emailHelp" name="email" maxlength="100" required>
                 <div class="form-text">Não compartilhe o seu e-mail com ninguém.</div>
             </div>
             <div class="mb-4">
-                <label for="exampleInputPassword1" class="form-label">Senha</label>
-                <input type="password" class="form-control" required>
+                <label for="exampleInputPassword1" class="form-label" name="senha">Senha</label>
+                <input type="password" class="form-control" maxlength="30" required>
                 <div class="form-text">Informe uma senha forte.</div>
             </div>
             <div class="mb-4">
-                <label for="exampleInputPassword1" class="form-label">Confirmar senha</label>
+                <label for="exampleInputPassword1" class="form-label" maxlength="30" name="confSenha">Confirmar senha</label>
                 <input type="password" class="form-control" required>
             </div>
             <button type="submit" class="btn" style="margin: auto; margin-top: 40px;">Cadastrar</button>
