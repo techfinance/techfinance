@@ -23,7 +23,7 @@
     
 </head>
 <body>
-   <?php  include "../src/views/login.php"?>
+   <?php  include "../src/controllers/controle_login.php"?>
     
     <script src="js/main.js"></script>
 </body>

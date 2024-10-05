@@ -2,9 +2,9 @@
     <div class="p-2 banner">
         <p class="fs-2" id="brand">TECH FINANCE</p>
         <h1>Bem-vindo!</h1>
-        <p class="fs-3" style="font-weight: 500;">Ainda não possui uma conta? <a href="" class="cadastro-go">Cadastrar</a></p>
+        <p class="fs-3" style="font-weight: 500;">Ainda não possui uma conta? <a href="../src/views/cadastro.php" class="cadastro-go">Cadastrar</a></p>
         <div class="line-style"></div>
-        <p class="fs-5">Bem-vindo! Acompanhe suas finanças, mantenha o controle dos seus gastos e continue atingindo suas metas financeiras com facilidade</p>
+        <p class="p-banner">Bem-vindo! Acompanhe suas finanças, mantenha o controle dos seus gastos e continue atingindo suas metas financeiras com facilidade</p>
         <button type="button" class="btn">Leia mais</button>
     </div>
     <div class="form">

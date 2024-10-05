@@ -18,6 +18,10 @@
     font-weight: 700;
 }
 
+.p-banner {
+    font-size: 1.2em;
+}
+
 #brand {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
@@ -81,4 +85,10 @@
 
 .form-text {
     color: rgba(255, 255, 255, 0.76);
+}
+
+@media only screen and (max-width: 1000px){
+    .form { padding: 60px 30px; }
+    .banner > h1 { font-size: 2.5em;}
+    .p-banner {font-size: 1em;}
 }
