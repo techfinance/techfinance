@@ -18,6 +18,7 @@
         }
 
         public function cadastrar($nome, $email, $senha){
+
             $sql = $this->pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :e");
             $sql->bindValue(":e", $email);
             $sql->execute();
@@ -35,7 +36,22 @@
         }
 
         public function logar($email, $senha){
-            
+
+            $sql = $this->pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :e AND senha = :s");
+            $sql->bindValue(":e", $email);
+            $sql->bindValue(":s", $senha);
+            $sql->execute();
+            if($sql->rowCount() > 0){
+
+                //entrar no ambiente (sessão)
+                $dados = $sql->fetch(PDO::FETCH_ASSOC);
+                session_start();
+                $_SESSION["id_usuario"] = $dados["id_usuario"];
+                return true;
+                
+            } else {
+                return false;
+            }
 
         }
     }
