@@ -1,0 +1,84 @@
+.login-cadastro-view {
+    width: 100%;
+    min-height: 100vh;
+    color: white;
+    background-image: url("../images/background.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    gap: 25px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.banner {
+    width: 600px;
+}
+
+.banner > h1 {
+    font-size: 4em;
+    font-weight: 700;
+}
+
+#brand {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+
+.line-style {
+    background-color: white;
+    height: 5px;
+    width: 100px;
+    border-radius: 5px;
+    margin-block: 20px 30px;
+}
+
+.cadastro-go {
+    color: var(--primary-green);
+    font-weight: 500;
+}
+
+.btn {
+    background-color: var(--primary-green);
+    color: white;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 8px 30px;
+    display: block;
+    margin-top: 30px;
+}
+
+.form {
+    width: 550px;
+    background-color: #00a87828;
+    border-radius: 25px;
+    padding: 60px 75px;
+}
+
+.form-label {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.form > h1 {
+    font-weight: 700;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    padding-block: 15px;
+    background-color: #00a8783a;
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 10px;
+}
+
+.form-control:focus {
+    background-color: #00a8783a;
+    color: white;
+}
+
+.form-text {
+    color: rgba(255, 255, 255, 0.76);
+}

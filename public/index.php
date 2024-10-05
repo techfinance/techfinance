@@ -17,15 +17,13 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/login.css">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
 </head>
 <body>
-   <form action="controle_login.php" method="POST">
-    
-
-   </form>
+   <?php  include "../src/views/login.php"?>
     
     <script src="js/main.js"></script>
 </body>
