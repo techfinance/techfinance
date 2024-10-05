@@ -27,11 +27,9 @@
                 echo "ERRO: ".$query->erro;
             }
 
-
         } else {
             echo "Preencha todos os campos!";
         }
-
 
     }
 

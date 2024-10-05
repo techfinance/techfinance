@@ -23,7 +23,11 @@
     
 </head>
 <body>
-   <?php  include "../src/views/cadastro.php"?>
+    <?php
+        session_start();
+        isset($_SESSION['id_usuario']) ? include "../src/views/ambiente.php" : include "../src/views/login.php"; 
+            
+    ?>
     
     <script src="js/main.js"></script>
 </body>

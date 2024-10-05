@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_SESSION['id_usuario'])){
+        header("Location: ../../public/index.php");
+    }
+?>
+
 <head>
         <div class="container-fluid top-nav">
             <div class="navbar-brand"><img src="images/logo.jpg" alt="logo do site" id="logo"></div>

@@ -26,7 +26,7 @@
             $sql->execute();
             if($sql->rowCount() > 0){
                 return false; //já está cadastrado
-                
+
             } else {
                 $sql = $this->pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:n, :e, :s)");
                 $sql->bindValue(":n", $nome);
@@ -42,12 +42,12 @@
 
             $sql = $this->pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :e AND senha = :s");
             $sql->bindValue(":e", $email);
-            $sql->bindValue(":s", $senha);
+            $sql->bindValue(":s", md5($senha));
             $sql->execute();
             if($sql->rowCount() > 0){
 
                 //entrar no ambiente (sessão)
-                $dados = $sql->fetch(PDO::FETCH_ASSOC);
+                $dados = $sql->fetch();
                 session_start();
                 $_SESSION["id_usuario"] = $dados["id_usuario"];
                 return true;
