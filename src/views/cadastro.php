@@ -9,7 +9,7 @@
     </div>
     <div class="form">
         <h1>Cadastro</h1>
-        <form>
+        <form action="../../src/controllers/controle_cadastro.php" method="POST">
             <div class="mb-4">
                 <label for="exampleInputPassword1" class="form-label">Nome</label>
                 <input type="text" class="form-control" maxlength="100" name="nome" required>
@@ -20,13 +20,13 @@
                 <div class="form-text">Não compartilhe o seu e-mail com ninguém.</div>
             </div>
             <div class="mb-4">
-                <label for="exampleInputPassword1" class="form-label" name="senha">Senha</label>
-                <input type="password" class="form-control" maxlength="30" required>
+                <label for="exampleInputPassword1" class="form-label">Senha</label>
+                <input type="password" class="form-control" maxlength="30" name="senha" required>
                 <div class="form-text">Informe uma senha forte.</div>
             </div>
             <div class="mb-4">
-                <label for="exampleInputPassword1" class="form-label" maxlength="30" name="confSenha">Confirmar senha</label>
-                <input type="password" class="form-control" required>
+                <label for="exampleInputPassword1" class="form-label" maxlength="30">Confirmar senha</label>
+                <input type="password" class="form-control" name="confSenha" required>
             </div>
             <button type="submit" class="btn" style="margin: auto; margin-top: 40px;">Cadastrar</button>
         </form>
