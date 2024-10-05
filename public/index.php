@@ -22,53 +22,11 @@
     
 </head>
 <body>
-    <head>
-        <div class="container-fluid top-nav">
-            <div class="navbar-brand"><img src="images/logo.jpg" alt="logo do site" id="logo"></div>
-            <div class="nav-config">
-                <i class="bi bi-gear nav-config-items" id="config"></i>
-                <i class="bi bi-person-circle nav-config-items" id="user"></i>
-            </div>
-        </div>
-        <nav class="navbar navbar-expand-lg" id="nav-bar">
-            <div class="container-fluid" id="container-nav">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Registros de Despesas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Metas Financeiras</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Sonhos de Consumo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Meus Gastos</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </head>
-    <main>
-
-
-    </main>
-    <footer>
-        <div class="container-fluid" id="footer">
-            &copy; All rights reserved | TechFinance 2024. Todos os direitos reservados. 
-        </div>
-    </footer>
-
-
+   <form action="controle_login.php" method="POST">
     
 
+   </form>
+    
+    <script src="js/main.js"></script>
 </body>
 </html>
