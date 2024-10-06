@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -26,8 +27,8 @@
     <?php
         session_start();
         isset($_SESSION['id_usuario']) ? include "../src/views/ambiente.php" : include "../src/views/login.php"; 
-            
-    ?>
+        
+    ?>  
     
     <script src="js/main.js"></script>
 </body>

@@ -1,6 +1,6 @@
 <?php
     if(!isset($_SESSION['id_usuario'])){
-        header("Location: ../../public/index.php");
+       header("Location: ../../public/index.php");
     }
 ?>
 
@@ -9,7 +9,7 @@
             <div class="navbar-brand"><img src="images/logo.jpg" alt="logo do site" id="logo"></div>
             <div class="nav-config">
                 <i class="bi bi-gear nav-config-items" id="config"></i>
-                <i class="bi bi-person-circle nav-config-items" id="user"></i>
+                <i class="bi bi-person-circle nav-config-items" id="user"><a href="../src/controllers/session_out.php">sair</a></i>
             </div>
         </div>
         <nav class="navbar navbar-expand-lg" id="nav-bar">

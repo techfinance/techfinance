@@ -15,7 +15,7 @@
                     header("Location: ../../public/index.php");
 
                 } else {
-                 echo "E-mail e/ou senha estão incorretos!";
+                    header("Location: ../../public/index.php?login=false");
      
                 }
             } else {
