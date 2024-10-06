@@ -13,16 +13,13 @@
             if($query->erro == ""){
                 if($query->logar($email, $senha)){
                     header("Location: ../../public/index.php");
-
                 } else {
                     header("Location: ../../public/index.php?login=false");
-     
                 }
             } else {
                 echo "Erro: ".$query->erro;
             }
            
-
         } else {
             echo "Preencha todos os campos";
         }

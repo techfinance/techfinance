@@ -29,6 +29,8 @@
                 <input type="password" class="form-control" name="confSenha" required>
             </div>
             <div class="incorreto" id="notEqual" hidden>As senhas estão diferentes!</div>
+            <div class="incorreto" id="notEmail" hidden>E-mail já cadastrado</div>
+            <div class="correto" id="cadastro-ok" hidden>Cadastrado com sucesso! <br> Faça <a href="#" onclick="getPage('login')">login</a> para acessar</div>
             <button type="submit" class="btn" style="margin: auto; margin-top: 40px;">Cadastrar</button>
         </form>
         

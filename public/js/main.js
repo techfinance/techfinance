@@ -5,26 +5,28 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const login = urlParams.get('login');
 const senha = urlParams.get('senha');
+const email = urlParams.get('email');
 
-if(login == 'false'){
+// mensagens erro login-cadastro
+if(login == 'false')
     loginMessage.hidden = false; 
-} else if(senha == 'false'){
-   senhaDiferente();
-}
+else if(senha == 'false')
+    getMessage("#notEqual");
+else if(email == 'false')
+    getMessage("#notEmail");
+else if(email == 'true')
+    getMessage("#cadastro-ok");
 
-function senhaDiferente(){
+function getMessage(element){
     const page = getPage('cadastro');
-    page.finally(() => document.querySelector("#notEqual").hidden = false);
+    page.finally(() => document.querySelector(element).hidden = false);
 }
 
-// ajax view
+// ajax view pages
 async function getPage(page) {
     const response = await fetch(`../src/views/${page}.php`);
-
-    if(!response.ok){
+    if(!response.ok)
         console.log(response.status);
-    }
     const text = await response.text();
-
     main ? main.innerHTML = text : document.body.innerHTML = text;
 }

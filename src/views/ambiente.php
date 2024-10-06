@@ -2,15 +2,14 @@
     if(!isset($_SESSION['id_usuario'])){
         session_destroy();
         header("Location: ../../public/index.php");
-    }
-?>
+    }?>
 
 <head>
     <div class="container-fluid top-nav">
         <div class="navbar-brand"><img src="images/logo.jpg" alt="logo do site" id="logo"></div>
         <div class="nav-config">
             <i class="bi bi-gear nav-config-items" id="config"></i>
-            <i class="bi bi-person-circle nav-config-items" id="user"><a href="../src/controllers/session_out.php">sair</a></i>
+            <a href="../src/controllers/session_out.php"><i class="bi bi-person-circle nav-config-items" id="user"></i></a>
         </div>
     </div>
     <nav class="navbar navbar-expand-lg" id="nav-bar">
@@ -40,11 +39,9 @@
         </div>
     </nav>
 </head>
-    
 <main id="main">
     <?php include "../src/views/home.php" ?>
 </main>
-
 <footer>
     <div class="container-fluid" id="footer">
         &copy; All rights reserved | TechFinance 2024. Todos os direitos reservados.

@@ -89,6 +89,16 @@
     color: var(--primary-red);
     text-align: center;
 }
+.correto {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary-green);
+    text-align: center;
+}
+
+.correto > a {
+    color: var(--primary-green);
+}
 
 @media only screen and (max-width: 1000px){
     .form { padding: 60px 30px; }
