@@ -39,8 +39,10 @@
         </div>
     </nav>
 </head>
-<main id="main">
-    <?php include "../src/views/home.php" ?>
+<main>
+    <div class="container" id="main">
+        <?php include "../src/views/home.php" ?>
+    </div>
 </main>
 <footer>
     <div class="container-fluid" id="footer">

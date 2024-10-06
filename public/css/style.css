@@ -12,6 +12,8 @@ body {
     min-height: 100vh;
 }
 
+
+
 #footer {
     background-color: var(--primary-blue);
     color: white;
