@@ -20,7 +20,7 @@
                         echo "E-mail já cadastrado!";
                     }
                 } else{
-                    echo "As senhas estão diferentes!";
+                    header("Location: ../../public/index.php?senha=false");
                 }
 
             } else {

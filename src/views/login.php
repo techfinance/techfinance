@@ -19,7 +19,7 @@
                 <label for="exampleInputPassword1" class="form-label">Senha</label>
                 <input type="password" name="senha" class="form-control" id="exampleInputPassword1" maxlength="30" required >
             </div>
-            <div class="incorreto" hidden>Email e/ou senha estão incorretos!</div>
+            <div class="incorreto" hidden>E-mail e/ou senha estão incorretos!</div>
             <button type="submit" class="btn" style="margin: auto; margin-top: 40px;">Entrar</button>
         </form>
         

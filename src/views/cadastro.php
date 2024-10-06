@@ -28,6 +28,7 @@
                 <label for="exampleInputPassword1" class="form-label" maxlength="30">Confirmar senha</label>
                 <input type="password" class="form-control" name="confSenha" required>
             </div>
+            <div class="incorreto" id="notEqual" hidden>As senhas estão diferentes!</div>
             <button type="submit" class="btn" style="margin: auto; margin-top: 40px;">Cadastrar</button>
         </form>
         
