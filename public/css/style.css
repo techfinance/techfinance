@@ -12,8 +12,6 @@ body {
     min-height: 100vh;
 }
 
-
-
 #footer {
     background-color: var(--primary-blue);
     color: white;
@@ -22,7 +20,7 @@ body {
     width: 100%;
     text-align: center;
     padding: 12px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 @media only screen and (max-width: 1000px) {

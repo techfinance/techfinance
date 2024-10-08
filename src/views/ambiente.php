@@ -6,7 +6,7 @@
 
 <head>
     <div class="container-fluid top-nav">
-        <div class="navbar-brand"><img src="images/logo.jpg" alt="logo do site" id="logo"></div>
+        <div class="navbar-brand"><img src="images/logo.png" alt="logo do site" id="logo"></div>
         <div class="nav-config">
             <i class="bi bi-gear nav-config-items" id="config"></i>
             <a href="../src/controllers/session_out.php"><i class="bi bi-person-circle nav-config-items" id="user"></i></a>

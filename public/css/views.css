@@ -1,2 +1,6 @@
-.container {padding: 15px;}
+.container {
+    padding: 15px;
+    color: var(--primary-blue);
+
+}
 .h1-user {font-weight: 600;}

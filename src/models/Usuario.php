@@ -1,7 +1,7 @@
 <?php
     Class Usuario{
 
-        private $pdo;
+        protected $pdo;
         public $erro = "";
 
         public function __construct($dbname, $host, $user, $senha){

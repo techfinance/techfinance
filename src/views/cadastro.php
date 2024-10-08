@@ -1,6 +1,7 @@
 <div class="container-fluid d-flex align-items-center justify-content-center flex-wrap p-2 login-cadastro-view">
     <div class="p-2 banner">
-        <p class="fs-2" id="brand">TECH FINANCE</p>
+        
+        <p class="fs-2" id="brand"><img src="./images/logo.png" alt="logo do site" id="logo-grande"> TECH FINANCE</p>
         <h1>Comece agora</h1>
         <p class="fs-3" style="font-weight: 500;">Já possui uma conta? <a href="#" class="cadastro-go" onclick="getPage('login')">Login</a></p>
         <div class="line-style"></div>

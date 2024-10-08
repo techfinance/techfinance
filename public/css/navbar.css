@@ -24,7 +24,7 @@
 
 #logo {
     display: block;
-    width: 40px;
+    width: 30px;
     margin: auto;
     transform: translateX(40px);
 }
@@ -34,7 +34,7 @@
 
 #container-nav {
     background-color: var(--primary-green);
-    justify-content: end;
+    justify-content: start;
     text-align: center;
 }
 
