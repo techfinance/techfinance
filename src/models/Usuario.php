@@ -1,41 +1,38 @@
 <?php
-    Class Usuario{
-
-        protected $pdo;
-        public $erro = "";
-
-        public function __construct($dbname, $host, $user, $senha){
-            try{
-                $this->pdo = new PDO("mysql:dbname=$dbname;host=$host", $user, $senha);
-            } catch(PDOException $e){
-                $this->erro = $e->getMessage();
-                exit();
-            } catch(Exception $e){
-                echo "Erro: ".$e->getMessage();
-                exit();
-            }
-        }
+    class Usuario extends Banco {
 
         public function cadastrar($nome, $email, $senha){
 
-            $sql = $this->pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :e");
+            $sql = $this->pdo->prepare("SELECT id_usuario FROM usuario WHERE email = :e");
             $sql->bindValue(":e", $email);
             $sql->execute();
             if($sql->rowCount() > 0){
                 return false; //já está cadastrado
             } else {
-                $sql = $this->pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:n, :e, :s)");
+                $sql = $this->pdo->prepare("INSERT INTO usuario (nome_user, email, senha) VALUES (:n, :e, :s)");
                 $sql->bindValue(":n", $nome);
                 $sql->bindValue(":e", $email);
                 $sql->bindValue(":s", md5($senha));
                 $sql->execute();
+
+                //cria carteira ao cadastrar associada ao id criado
+                $sql = $this->pdo->prepare("SELECT id_usuario FROM usuario WHERE email = :e");
+                $sql->bindValue(":e", $email);
+                $sql->execute();
+                $dados = $sql->fetch();
+                $sql = $this->pdo->prepare("INSERT INTO carteira (nome_carteira, saldo, usuario_id_usuario) VALUES (:n, :s, :i)");
+                $sql->bindValue(":n", $nome);
+                $sql->bindValue(":s", 0.00);
+                $sql->bindValue(":i", $dados["id_usuario"]);
+                $sql->execute();
+
                 return true; //cadastrado com sucesso
             }
         }
 
         public function logar($email, $senha){
 
-            $sql = $this->pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :e AND senha = :s");
+            $sql = $this->pdo->prepare("SELECT id_usuario FROM usuario WHERE email = :e AND senha = :s");
             $sql->bindValue(":e", $email);
             $sql->bindValue(":s", md5($senha));
             $sql->execute();

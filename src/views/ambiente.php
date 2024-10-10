@@ -23,7 +23,7 @@
                         <a class="nav-link" aria-current="page" href="#" onclick="getPage('home')">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="getPage('registros')">Registros de Despesas</a>
+                        <a class="nav-link" href="#" onclick="getPage('registros')">Registros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="getPage('metas')">Metas Financeiras</a>

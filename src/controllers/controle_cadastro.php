@@ -1,5 +1,7 @@
 <?php
-    require_once "../models/Usuario.php";
+    spl_autoload_register(function ($class_name) {
+        include '../../src/models/' . $class_name . '.php';
+    });
 
     if(isset($_POST['nome'])){
 
@@ -10,7 +12,7 @@
 
         //verificar se está preenchido
         if(!empty($nome) && !empty($email) && !empty($senha) && !empty($confSenha)){
-            $query = new Usuario("techfinance", "localhost", "root", "");
+            $query = new Usuario("tech_finance1", "localhost", "root", "");
 
             if($query->erro == ""){ //sem erros
                 if($senha == $confSenha){

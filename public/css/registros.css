@@ -1,0 +1,12 @@
+.flex-registros {
+    gap: 30px;
+}
+
+.text-registros {
+    text-align: center;
+}
+
+#modal-registrar {
+    display: block;
+    margin: 20px auto;
+}
