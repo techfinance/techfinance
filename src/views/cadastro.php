@@ -13,21 +13,21 @@
         <form action="../../src/controllers/controle_cadastro.php" method="POST">
             <div class="mb-4">
                 <label for="exampleInputPassword1" class="form-label">Nome</label>
-                <input type="text" class="form-control" maxlength="100" name="nome" required>
+                <input type="text" class="form-control form-login" maxlength="100" name="nome" required>
             </div>
             <div class="mb-4">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" aria-describedby="emailHelp" name="email" maxlength="100" required>
+                <input type="email" class="form-control form-login" aria-describedby="emailHelp" name="email" maxlength="100" required>
                 <div class="form-text">Não compartilhe o seu e-mail com ninguém.</div>
             </div>
             <div class="mb-4">
                 <label for="exampleInputPassword1" class="form-label">Senha</label>
-                <input type="password" class="form-control" maxlength="30" name="senha" required>
+                <input type="password" class="form-control form-login" maxlength="30" name="senha" required>
                 <div class="form-text">Informe uma senha forte.</div>
             </div>
             <div class="mb-4">
                 <label for="exampleInputPassword1" class="form-label" maxlength="30">Confirmar senha</label>
-                <input type="password" class="form-control" name="confSenha" required>
+                <input type="password" class="form-control form-login" name="confSenha" required>
             </div>
             <div class="incorreto" id="notEqual" hidden>As senhas estão diferentes!</div>
             <div class="incorreto" id="notEmail" hidden>E-mail já cadastrado</div>

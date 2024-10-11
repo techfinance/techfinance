@@ -65,7 +65,7 @@
     margin-bottom: 20px;
 }
 
-.form-control {
+.form-login {
     padding-block: 15px;
     background-color: #00a8783a;
     color: white;
@@ -74,7 +74,7 @@
     border-radius: 10px;
 }
 
-.form-control:focus {
+.form-login:focus {
     background-color: #00a8783a;
     color: white;
 }

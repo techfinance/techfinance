@@ -12,12 +12,12 @@
         <form action="../src/controllers/controle_login.php" method="POST">
             <div class="mb-4">
                 <label for="exampleInputEmail1" class="form-label" name="email">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" required>
+                <input type="email" class="form-control form-login" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" required>
                 <div id="emailHelp" class="form-text" maxlength="100">Não compartilhe o seu e-mail com ninguém.</div>
             </div>
             <div class="mb-4">
                 <label for="exampleInputPassword1" class="form-label">Senha</label>
-                <input type="password" name="senha" class="form-control" id="exampleInputPassword1" maxlength="30" required >
+                <input type="password" name="senha" class="form-control form-login" id="exampleInputPassword1" maxlength="30" required >
             </div>
             <div class="incorreto" hidden>E-mail e/ou senha estão incorretos!</div>
             <button type="submit" class="btn" style="margin: auto; margin-top: 40px;">Entrar</button>

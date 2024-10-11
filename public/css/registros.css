@@ -10,3 +10,43 @@
     display: block;
     margin: 20px auto;
 }
+
+.modal-form {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.form-despesa-input {
+    background-color: #00a87860;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding-block: 10px;
+    font-size: 1.1em;
+}
+
+.form-despesa-input:focus {
+    background-color: #00a87860;
+    color: white;
+}
+
+.form-text-input {
+    background-color: var(--primary-green);
+    color: white;
+    font-weight: 500;
+    border: none;
+}
+
+select option {
+    background-color:  var(--primary-green)!important;
+    color: white!important;
+}
+
+.modal-form {
+    border-radius: 15px;
+}
+
+.form-check-input {
+    background-color: #00a87860;
+    border: none;
+}

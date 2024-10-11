@@ -1,4 +1,6 @@
-<h2 class="h1-user">Olá, Guilherme!</h2>
+<?php if(!isset($_SESSION["nome"])) session_start();?>
+
+<h1>Olá, <?php echo $_SESSION["nome"]; ?>!</h1>
 
 
 <div class="container">
