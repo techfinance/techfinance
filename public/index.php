@@ -34,5 +34,6 @@
     ?>  
     
     <script src="js/main.js"></script>
+    <script src="js/registros.js"></script>
 </body>
 </html>

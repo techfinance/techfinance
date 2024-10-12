@@ -16,15 +16,15 @@
                     </div>
                     <div class="modal-body">
                         <!-- FORMULARIO DESPESA -->
-                        <form class="form-despesa text-start">
+                        <form class="form-despesa text-start" id="form-saida">
                           <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Nome da Despesa</label>
-                            <input type="text" class="form-control form-despesa-input" id="exampleInputEmail1">
+                            <label for="nomeDespesa" class="form-label">Nome da Despesa</label>
+                            <input type="text" class="form-control form-despesa-input" id="nomeDespesa" required>
                           </div>
                           <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Categoria da Despesa</label>
-                            <select class="form-select form-despesa-input" aria-label="Default select example" id="exampleInputPassword1">
-                              <option selected>Selecione</option>
+                            <label for="categoriaDespesa" class="form-label">Categoria da Despesa</label>
+                            <select class="form-select form-despesa-input" aria-label="Default select example" id="categoriaDespesa" required>
+                              <option selected disabled>Selecione</option>
                               <option value="1">One</option>
                               <option value="2">Two</option>
                               <option value="3">Outros</option>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="modal-footer border-0">
                         <button class="btn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Entrada</button>
-                        <button type="submit" class="btn">Registrar</button>
+                        <input type="submit" class="btn" value="Registrar" form="form-saida"></input>
                     </div>
                 </div>
             </div>
@@ -150,11 +150,9 @@
 
 
     </div>
-
-
-
-
-
 </div>
+
+
+
 
 
