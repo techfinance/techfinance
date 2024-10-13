@@ -49,7 +49,7 @@ if(!isset($_SESSION["id_usuario"])){
                             <label for="valor" class="form-label">Valor</label>
                             <div class="input-group">
                               <span class="input-group-text form-text-input" id="addon-wrapping">R$</span>
-                              <input type="number" step="0.01" min="0" class="form-control form-despesa-input" aria-label="Value" aria-describedby="addon-wrapping" id="valor">
+                              <input type="number" step="0.01" min="0" class="form-control form-despesa-input" aria-label="Value" aria-describedby="addon-wrapping" id="valor" required>
                             </div>
                           </div>
                         </form>
@@ -90,7 +90,8 @@ if(!isset($_SESSION["id_usuario"])){
                     </div>
                     <div class="modal-footer border-0">
                         <button class="btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Despesa</button>
-                        <button type="button" class="btn" form="form-entrada" id="registro-entrada">Registrar</button>
+                        <input type="submit" class="btn" value="Registrar" form="form-entrada"></input>
+                        <!--<button type="button" class="btn" form="form-entrada" id="registro-entrada">Registrar</button>-->
                     </div>
                 </div>
             </div>
@@ -123,7 +124,10 @@ if(!isset($_SESSION["id_usuario"])){
       $dados = $registrar->getAllRegistros($_SESSION["id_usuario"]);
 
       if(count($dados) > 0){
-        for($i = 0; $i < 10; $i++){
+        for($i = 0; $i < count($dados); $i++){
+          if($i == 10){
+            break;
+          }
           echo "<tr>";
           echo "<td>$i</td>";
           foreach($dados[$i] as $key => $value){
@@ -147,10 +151,9 @@ if(!isset($_SESSION["id_usuario"])){
           }
           echo "<td><i class='bi bi-trash-fill'></i></td>";
           echo "</tr>";
-        }
-
-
-
+        } 
+      } else {
+        echo "<tr><td colspan='7' class='text-center'>Você ainda não tem registros</td></tr>";
       }
 
     ?>

@@ -1,3 +1,10 @@
+function waitForElement(querySelector, callback){
+    let poops = setInterval(() => {
+        if(document.querySelector(querySelector)){
+            callback();
+        }
+    }, 100);
+}
 
 waitForElement("#form-saida", () => {
     const formGasto = document.querySelector("#form-saida");
@@ -10,7 +17,7 @@ waitForElement("#form-saida", () => {
         } else {
             categoriaNome.hidden = true;
         }
-    }, 50);
+    }, 100);
 
     formGasto.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -33,13 +40,15 @@ waitForElement("#form-saida", () => {
 
         });
 
+        clearInterval();
+
 });
 
 waitForElement("#form-entrada", () => {
 
-    const formEntrada = document.querySelector("#registro-entrada");
+    const formEntrada = document.querySelector("#form-entrada");
 
-    formEntrada.addEventListener("click", (e) => {
+    formEntrada.addEventListener("submit", (e) => {
         e.preventDefault();
 
         const nomeEntrada = document.querySelector("#nomeEntrada").value;
@@ -49,6 +58,8 @@ waitForElement("#form-entrada", () => {
 
         ajaxEntrada(nomeEntrada, valorEntrada);
     });
+
+    clearInterval();
 })
 
 
@@ -83,26 +94,12 @@ async function ajaxEntrada(nomeEntrada, valor) {
     }
     let data = await response.text();
     
-    if(data === "Preencha todos os campos!"){
-        document.querySelector(".negado-entrada").hidden = false;
-        setTimeout(() => {
-            document.querySelector(".negado-entrada").hidden = true;
-        }, 2000);
-    } else {
-        document.querySelector(".sucesso-entrada").hidden = false;
-        setTimeout(() => {
-        document.querySelector(".sucesso-entrada").hidden = true;
-        }, 5000);
-    }   
+    console.log(data);
+    document.querySelector(".sucesso-entrada").hidden = false;  
+    setTimeout(() => {
+    document.querySelector(".sucesso-entrada").hidden = true;
+    }, 5000);
     
 }
 
-
-function waitForElement(querySelector, callback){
-    let poops = setInterval(() => {
-        if(document.querySelector(querySelector)){
-            callback();
-        }
-    }, 100);
-}
 

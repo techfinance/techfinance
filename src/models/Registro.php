@@ -15,7 +15,6 @@
             $sql->execute();
 
             return true;
-            
         }
 
         //cadastra entrada

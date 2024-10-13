@@ -1,0 +1,44 @@
+.dica {
+    width: 300px;
+    flex-basis: 300px;
+}
+
+.title-home {
+    flex-shrink: 2;
+}
+
+.ideia {
+    width: 350px;
+}
+
+h3 {
+    font-weight: 600;
+}
+
+.top-row {
+    margin-bottom: 30px;
+}
+
+#valor-carteira {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Montserrat";
+}
+
+#homeRegistros {
+    color: var(--primary-blue);
+}
+
+.carteira {
+    background-color: rgba(128, 128, 128, 0.127);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.positive {
+    color: var(--primary-green);
+}
+
+.negative {
+    color: var(--primary-red);
+}

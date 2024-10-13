@@ -14,17 +14,12 @@
 
             if($query->erro == ""){
                 if($query->cadastrarEntrada($tipo, $valor, $_SESSION["id_usuario"])){
-                    echo "Cadastrado com sucesso!";
+                    echo json_encode("Cadastrado com sucesso!");
                 } else {
                     echo "Não cadastrado!";
                 }
-            } else {
-                echo "Erro: ".$query->erro;
             }
-        } else {
-            echo "Preencha todos os campos!";
         }
-    } else {
-        echo "sem resposta";
-    }
+    } 
+    
 ?>
