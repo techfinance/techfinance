@@ -1,15 +1,33 @@
+
 waitForElement("#form-saida", () => {
     const formGasto = document.querySelector("#form-saida");
+    const categoriaDespesa = document.querySelector("#categoriaDespesa");
+    const categoriaNome = document.querySelector("#categoriaNome");
+
+    const interval = setInterval(() => {
+        if(categoriaDespesa.value === "Outros"){
+            categoriaNome.hidden = false;
+        } else {
+            categoriaNome.hidden = true;
+        }
+    }, 50);
 
     formGasto.addEventListener("submit", (e) => {
         e.preventDefault();
         
-        const nomeDespesa = document.querySelector("#nomeDespesa").value;
-        const categoriaDespesa = document.querySelector("#categoriaDespesa").value;
-        const valor = document.querySelector("#valor").value;
+        let nomeDespesa = document.querySelector("#nomeDespesa").value;
+        let categoriaDespesa = document.querySelector("#categoriaDespesa").value;
+        let valor = document.querySelector("#valor").value;
+        let nomeCategoria = document.querySelector("#textCategoria")
+
+        if(categoriaDespesa === "Outros"){
+            categoriaDespesa = nomeCategoria.value;
+        }
+
         document.querySelector("#nomeDespesa").value = "";
         document.querySelector("#categoriaDespesa").value = "";
         document.querySelector("#valor").value = "";
+        categoriaNome.value = "";
 
         ajaxGastos(nomeDespesa, categoriaDespesa, valor);
 
@@ -83,7 +101,6 @@ async function ajaxEntrada(nomeEntrada, valor) {
 function waitForElement(querySelector, callback){
     let poops = setInterval(() => {
         if(document.querySelector(querySelector)){
-            clearInterval(poops);
             callback();
         }
     }, 100);

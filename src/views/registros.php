@@ -1,4 +1,8 @@
-
+<?php
+if(!isset($_SESSION["id_usuario"])){
+  session_start();
+}
+?>
 <div class="container-fluid d-flex flex-wrap p-2 flex-registros">
     <div class="text-registros">
       <div class="title text-start">
@@ -37,19 +41,9 @@
                               <option value="Outros">Outros</option>
                             </select>
                           </div>
-                          <div class="row flex align-items-center" style="display: none;">
-                            <div class="col">
-                              <div class="mb-3">
-                                <label for="exampleInputPassword" class="form-label">Nome da Categoria</label>
-                                <input type="text" class="form-control form-despesa-input" id="exampleInputPassword" >
-                              </div>
-                            </div>
-                            <div class="col">
-                              <div class="form-check">
-                                <label class="form-check-label" for="flexCheckDefault" style="font-weight: 500;">DESEJA SALVAR?</label>
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                              </div>
-                            </div>
+                          <div class="mb-3" id="categoriaNome" hidden>
+                            <label for="textCategoria" class="form-label">Nome da Categoria</label>
+                            <input type="text" class="form-control form-despesa-input" id="textCategoria" >
                           </div>
                           <div class="mb-3">
                             <label for="valor" class="form-label">Valor</label>
@@ -120,96 +114,46 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Saída</td>
-      <td>Alimentação</td>
-      <td>Supermercado</td>
-      <td>R$ 250,00</td>
-      <td>2024-10-07</td>
-      <td><i class="bi bi-trash-fill"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Saída</td>
-      <td>Alimentação</td>
-      <td>Supermercado</td>
-      <td>250.00</td>
-      <td>2024-10-07</td>
-      <td><i class="bi bi-trash-fill"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Entrada</td>
-      <td>Salário</td>
-      <td>-</td>
-      <td>3000.00</td>
-      <td>2024-10-07</td>
-      <td><i class="bi bi-trash-fill"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Entrada</td>
-      <td>Salário</td>
-      <td>-</td>
-      <td>3000.00</td>
-      <td>2024-10-07</td>
-      <td><i class="bi bi-trash-fill"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>Entrada</td>
-      <td>Salário</td>
-      <td>-</td>
-      <td>3000.00</td>
-      <td>2024-10-07</td>
-      <td><i class="bi bi-trash-fill"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>Entrada</td>
-      <td>Salário</td>
-      <td>-</td>
-      <td>3000.00</td>
-      <td>2024-10-07</td>
-      <td><i class="bi bi-trash-fill"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td>Entrada</td>
-      <td>Salário</td>
-      <td>-</td>
-      <td>3000.00</td>
-      <td>2024-10-07</td>
-      <td><i class="bi bi-trash-fill"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">8</th>
-      <td>Saída</td>
-      <td>Alimentação</td>
-      <td>Supermercado</td>
-      <td>R$ 250,00</td>
-      <td>2024-10-07</td>
-      <td><i class="bi bi-trash-fill"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">9</th>
-      <td>Saída</td>
-      <td>Alimentação</td>
-      <td>Supermercado</td>
-      <td>R$ 250,00</td>
-      <td>2024-10-07</td>
-      <td><i class="bi bi-trash-fill"></i></td>
-    </tr>
-    <tr>
-      <th scope="row">10</th>
-      <td>Saída</td>
-      <td>Alimentação</td>
-      <td>Supermercado</td>
-      <td>R$ 250,00</td>
-      <td>2024-10-07</td>
-      <td><i class="bi bi-trash-fill"></i></td>
-    </tr>
+    <?php
+      spl_autoload_register(function ($class_name) {
+        include '../../src/models/' . $class_name . '.php';
+      });
+
+      $registrar = new Registro("tech_finance1", "localhost", "root", "");
+      $dados = $registrar->getAllRegistros($_SESSION["id_usuario"]);
+
+      if(count($dados) > 0){
+        for($i = 0; $i < 10; $i++){
+          echo "<tr>";
+          echo "<td>$i</td>";
+          foreach($dados[$i] as $key => $value){
+            if($value == NULL){
+              echo "<td>-</td>";
+              continue;
+            }
+
+            if($key == "valor") {
+              echo"<td>R$ ".number_format($value,2,",",".")."</td>";
+              continue;
+            }
+  
+            if($key == "data_transacao"){
+              $data_edit = DateTime::createFromFormat('Y-m-d', $value);
+              echo "<td>".$data_edit->format('d/m/Y')."</td>";
+              continue;
+            }
+  
+            echo "<td>$value</td>";
+          }
+          echo "<td><i class='bi bi-trash-fill'></i></td>";
+          echo "</tr>";
+        }
+
+
+
+      }
+
+    ?>
 
   </tbody>
 </table>
