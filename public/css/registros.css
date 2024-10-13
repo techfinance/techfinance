@@ -50,3 +50,31 @@ select option {
     background-color: #00a87860;
     border: none;
 }
+
+.sucesso-registro {
+    color: var(--primary-green);
+    font-weight: 600;
+}
+
+.sucesso-entrada {
+    color: var(--primary-green);
+    font-weight: 600;
+}
+
+.title {
+    padding-bottom: 20px;
+}
+
+.table-responsive {
+    margin-bottom: 20px;
+}
+
+.negado-entrada {
+    color: var(--primary-red);
+    font-weight: 600;
+}
+
+table {
+    font-size: 14px;
+}
+

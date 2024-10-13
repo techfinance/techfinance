@@ -1,7 +1,11 @@
-<h1>Vamos lá!</h1>
-<p>Registre sua despesa ou entrada e mantenha suas finanças em dia</p>
-<div class="container-fluid d-flex align-items-center flex-wrap p-2 flex-registros">
+
+<div class="container-fluid d-flex flex-wrap p-2 flex-registros">
     <div class="text-registros">
+      <div class="title text-start">
+        <h1>Vamos lá!</h1>
+        <p>Registre sua despesa ou entrada e mantenha suas finanças em dia</p>
+      </div>
+        
         <img src="./images/lembrete.svg" alt="lembrete">
         <h3>Lembrete</h3>
         <p>Antes de comprar, pergunte-se: isso é uma necessidade ou um desejo?</p>
@@ -25,12 +29,15 @@
                             <label for="categoriaDespesa" class="form-label">Categoria da Despesa</label>
                             <select class="form-select form-despesa-input" aria-label="Default select example" id="categoriaDespesa" required>
                               <option selected disabled>Selecione</option>
-                              <option value="1">One</option>
-                              <option value="2">Two</option>
-                              <option value="3">Outros</option>
+                              <option value="Geral">Geral</option>
+                              <option value="Lazer">Lazer</option>
+                              <option value="Alimentação">Alimentação</option>
+                              <option value="Transporte">Transporte</option>
+                              <option value="Saúde">Saúde</option>
+                              <option value="Outros">Outros</option>
                             </select>
                           </div>
-                          <div class="row flex align-items-center">
+                          <div class="row flex align-items-center" style="display: none;">
                             <div class="col">
                               <div class="mb-3">
                                 <label for="exampleInputPassword" class="form-label">Nome da Categoria</label>
@@ -48,10 +55,11 @@
                             <label for="valor" class="form-label">Valor</label>
                             <div class="input-group">
                               <span class="input-group-text form-text-input" id="addon-wrapping">R$</span>
-                              <input type="text" class="form-control form-despesa-input" aria-label="Value" aria-describedby="addon-wrapping" id="valor">
+                              <input type="number" step="0.01" min="0" class="form-control form-despesa-input" aria-label="Value" aria-describedby="addon-wrapping" id="valor">
                             </div>
                           </div>
                         </form>
+                        <div class="sucesso-registro text-center" hidden>Despesa registrada!</div>
                     </div>
                     <div class="modal-footer border-0">
                         <button class="btn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Entrada</button>
@@ -70,24 +78,25 @@
                     <!-- FORMULARIO DA ENTRADA -->
                     <div class="modal-body">
 
-                    <form action="" class="text-start">
+                    <form class="text-start" id="form-entrada">
                       <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Nome da Entrada</label>
-                          <input type="text" class="form-control form-despesa-input" id="exampleInputEmail1">
+                          <label for="nomeEntrada" class="form-label">Nome da Entrada</label>
+                          <input type="text" class="form-control form-despesa-input" id="nomeEntrada" required>
                           </div>
                         <div class="mb-3">
-                          <label for="valor" class="form-label">Valor</label>
+                          <label for="valorEntrada" class="form-label">Valor</label>
                           <div class="input-group">
                             <span class="input-group-text form-text-input" id="addon-wrapping">R$</span>
-                            <input type="text" class="form-control form-despesa-input" aria-label="Value" aria-describedby="addon-wrapping" id="valor">
+                            <input type="number" step="0.01" min="0" class="form-control form-despesa-input" aria-label="Value" aria-describedby="addon-wrapping" id="valorEntrada" required>
                           </div>
                         </div>
                     </form>
-                    
+                    <div class="sucesso-entrada text-center" hidden>Entrada registrada!</div>
+                    <div class="negado-entrada" hidden>Preencha todos os campos!</div>
                     </div>
                     <div class="modal-footer border-0">
                         <button class="btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Despesa</button>
-                        <button type="button" class="btn">Registrar</button>
+                        <button type="button" class="btn" form="form-entrada" id="registro-entrada">Registrar</button>
                     </div>
                 </div>
             </div>
@@ -97,7 +106,9 @@
 
     <div class="table-responsive">
     <table class="table table-striped table-hover flex-grow-1 flex-shrink-1">
+      
   <thead>
+  <tr><th colspan="7" class="text-center" style="font-weight: 600;">Últimos Registros</th></tr>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Tipo</th>
@@ -105,6 +116,7 @@
       <th scope="col">Categoria</th>
       <th scope="col">Valor</th>
       <th scope="col">Data da Transação</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -113,9 +125,9 @@
       <td>Saída</td>
       <td>Alimentação</td>
       <td>Supermercado</td>
-      <td>250.00</td>
+      <td>R$ 250,00</td>
       <td>2024-10-07</td>
-      <td>X</td>
+      <td><i class="bi bi-trash-fill"></i></td>
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -124,7 +136,7 @@
       <td>Supermercado</td>
       <td>250.00</td>
       <td>2024-10-07</td>
-      <td>X</td>
+      <td><i class="bi bi-trash-fill"></i></td>
     </tr>
     <tr>
       <th scope="row">3</th>
@@ -133,16 +145,70 @@
       <td>-</td>
       <td>3000.00</td>
       <td>2024-10-07</td>
-      <td>X</td>
+      <td><i class="bi bi-trash-fill"></i></td>
     </tr>
     <tr>
-      <th scope="row">3</th>
+      <th scope="row">4</th>
       <td>Entrada</td>
       <td>Salário</td>
       <td>-</td>
       <td>3000.00</td>
       <td>2024-10-07</td>
-      <td>X</td>
+      <td><i class="bi bi-trash-fill"></i></td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>Entrada</td>
+      <td>Salário</td>
+      <td>-</td>
+      <td>3000.00</td>
+      <td>2024-10-07</td>
+      <td><i class="bi bi-trash-fill"></i></td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>Entrada</td>
+      <td>Salário</td>
+      <td>-</td>
+      <td>3000.00</td>
+      <td>2024-10-07</td>
+      <td><i class="bi bi-trash-fill"></i></td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td>Entrada</td>
+      <td>Salário</td>
+      <td>-</td>
+      <td>3000.00</td>
+      <td>2024-10-07</td>
+      <td><i class="bi bi-trash-fill"></i></td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td>Saída</td>
+      <td>Alimentação</td>
+      <td>Supermercado</td>
+      <td>R$ 250,00</td>
+      <td>2024-10-07</td>
+      <td><i class="bi bi-trash-fill"></i></td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <td>Saída</td>
+      <td>Alimentação</td>
+      <td>Supermercado</td>
+      <td>R$ 250,00</td>
+      <td>2024-10-07</td>
+      <td><i class="bi bi-trash-fill"></i></td>
+    </tr>
+    <tr>
+      <th scope="row">10</th>
+      <td>Saída</td>
+      <td>Alimentação</td>
+      <td>Supermercado</td>
+      <td>R$ 250,00</td>
+      <td>2024-10-07</td>
+      <td><i class="bi bi-trash-fill"></i></td>
     </tr>
 
   </tbody>

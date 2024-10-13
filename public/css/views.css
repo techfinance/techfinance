@@ -1,6 +1,6 @@
 .container {
     padding: 15px;
     color: var(--primary-blue);
-
+    flex: 1;
 }
 h1 {font-weight: 600;}
