@@ -1,5 +1,5 @@
 <?php
-    class Registro extends Banco {
+    class Registro extends Carteira {
 
         //cadastra saida
         public function cadastrarDespesa($tipo, $categoria, $valor, $id) {

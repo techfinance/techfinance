@@ -37,7 +37,7 @@ waitForElement("#form-saida", () => {
         categoriaNome.value = "";
 
         ajaxGastos(nomeDespesa, categoriaDespesa, valor).finally(async () => {
-            let response = await fetch("/../src/controllers/tabela.php");
+            let response = await fetch("/../src/controllers/controle_tabela.php");
             let data = await response.text();
 
             document.querySelector(".table-registros").innerHTML = data;
@@ -62,7 +62,7 @@ waitForElement("#form-entrada", () => {
         document.querySelector("#valorEntrada").value = "";
 
         ajaxEntrada(nomeEntrada, valorEntrada).finally(async () => {
-            let response = await fetch("/../src/controllers/tabela.php");
+            let response = await fetch("/../src/controllers/controle_tabela.php");
             let data = await response.text();
 
             document.querySelector(".table-registros").innerHTML = data;
@@ -114,7 +114,7 @@ async function excluirEntrada(id) {
     let data = await response.text();
 
     if(data = "ok") {
-        let response = await fetch("/../src/controllers/tabela.php");
+        let response = await fetch("/../src/controllers/controle_tabela.php");
         let data = await response.text();
 
         document.querySelector(".table-registros").innerHTML = data;
@@ -126,7 +126,7 @@ async function excluirSaida(id) {
     let data = await response.text();
 
     if(data = "ok") {
-        let response = await fetch("/../src/controllers/tabela.php");
+        let response = await fetch("/../src/controllers/controle_tabela.php");
         let data = await response.text();
 
         document.querySelector(".table-registros").innerHTML = data;

@@ -116,7 +116,7 @@ if(!isset($_SESSION["id_usuario"])){
   </thead>
   <tbody class="table-registros">
     <?php
-      include "../../src/controllers/tabela.php";
+      include "../../src/controllers/controle_tabela.php";
 
     ?>
 

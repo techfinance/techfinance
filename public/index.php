@@ -28,12 +28,14 @@
 </head>
 <body>
     <?php
+
         session_start();
         isset($_SESSION['id_usuario']) ? include "../src/views/ambiente.php" : include "../src/views/login.php"; 
-        
+  
     ?>  
     
     <script src="js/main.js"></script>
     <script src="js/registros.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>

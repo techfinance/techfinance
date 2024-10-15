@@ -11,10 +11,16 @@
 
         if(!empty($tipo) && !empty($valor)){
             $query = new Registro("tech_finance1", "localhost", "root", "");
+            $id = $_SESSION["id_usuario"];
 
             if($query->erro == ""){
-                if($query->cadastrarEntrada($tipo, $valor, $_SESSION["id_usuario"])){
+                if($query->cadastrarEntrada($tipo, $valor, $id)){
+                    $valorAtual = $query->valorCarteira($id);
+                    $newValor = $valorAtual + $valor;
+                    $query->updateCarteira($id, $newValor);
+
                     echo json_encode("Cadastrado com sucesso!");
+                    
                 } else {
                     echo "Não cadastrado!";
                 }
