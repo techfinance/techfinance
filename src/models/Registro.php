@@ -50,12 +50,21 @@
 
         //retorna todos os registros de entrada e saida ordenados por data
         public function getAllRegistros($id){
-            $sql = $this->pdo->query("SELECT 'Saída' tipo_transacao, tipo descricao, categoria, valor valor, saida_data data_transacao FROM saida WHERE usuario_id_usuario = $id UNION ALL SELECT 'Entrada' tipo_transacao, nome_entr descricao, null, valor_entr valor, entr_data data_transacao FROM entrada WHERE usuario_id_usuario = $id ORDER BY data_transacao DESC");
+            $sql = $this->pdo->query("SELECT id_saida id, 'Saída' tipo_transacao, tipo descricao, categoria, valor valor, saida_data data_transacao FROM saida WHERE usuario_id_usuario = $id UNION ALL SELECT id_entrada id, 'Entrada' tipo_transacao, nome_entr descricao, null, valor_entr valor, entr_data data_transacao FROM entrada WHERE usuario_id_usuario = $id ORDER BY data_transacao DESC");
             $dados = $sql->fetchAll(PDO::FETCH_ASSOC);
             return $dados;
 
         }
 
+        public function deleteSaida($id) {
+            $this->pdo->query("DELETE FROM saida WHERE id_saida = $id");
+            return true;
+        }
+
+        public function deleteEntrada($id) {
+            $this->pdo->query("DELETE FROM entrada WHERE id_entrada = $id");
+            return true;
+        }
 
     }
 

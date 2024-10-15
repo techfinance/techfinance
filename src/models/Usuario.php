@@ -1,5 +1,5 @@
 <?php
-    class Usuario extends Banco {
+    class Usuario extends Carteira {
 
         public function cadastrar($nome, $email, $senha){
 

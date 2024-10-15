@@ -11,7 +11,7 @@ waitForElement("#form-saida", () => {
     const categoriaDespesa = document.querySelector("#categoriaDespesa");
     const categoriaNome = document.querySelector("#categoriaNome");
 
-    const interval = setInterval(() => {
+    let interval = setInterval(() => {
         if(categoriaDespesa.value === "Outros"){
             categoriaNome.hidden = false;
         } else {
@@ -36,7 +36,12 @@ waitForElement("#form-saida", () => {
         document.querySelector("#valor").value = "";
         categoriaNome.value = "";
 
-        ajaxGastos(nomeDespesa, categoriaDespesa, valor);
+        ajaxGastos(nomeDespesa, categoriaDespesa, valor).finally(async () => {
+            let response = await fetch("/../src/controllers/tabela.php");
+            let data = await response.text();
+
+            document.querySelector(".table-registros").innerHTML = data;
+        })
 
         });
 
@@ -56,7 +61,12 @@ waitForElement("#form-entrada", () => {
         document.querySelector("#nomeEntrada").value = "";
         document.querySelector("#valorEntrada").value = "";
 
-        ajaxEntrada(nomeEntrada, valorEntrada);
+        ajaxEntrada(nomeEntrada, valorEntrada).finally(async () => {
+            let response = await fetch("/../src/controllers/tabela.php");
+            let data = await response.text();
+
+            document.querySelector(".table-registros").innerHTML = data;
+        })
     });
 
     clearInterval();
@@ -75,7 +85,6 @@ async function ajaxGastos(nomeDespesa, categoriaDespesa, valor) {
     }
     let data = await response.text();
     
-    console.log(data);
     document.querySelector(".sucesso-registro").hidden = false;
     setTimeout(() => {
         document.querySelector(".sucesso-registro").hidden = true;
@@ -92,14 +101,36 @@ async function ajaxEntrada(nomeEntrada, valor) {
     if(!response.ok){
         console.log(response.status);
     }
-    let data = await response.text();
     
-    console.log(data);
     document.querySelector(".sucesso-entrada").hidden = false;  
     setTimeout(() => {
     document.querySelector(".sucesso-entrada").hidden = true;
     }, 5000);
     
+}
+
+async function excluirEntrada(id) {
+    let response = await fetch("/../src/controllers/excluir.php?entrada="+id);
+    let data = await response.text();
+
+    if(data = "ok") {
+        let response = await fetch("/../src/controllers/tabela.php");
+        let data = await response.text();
+
+        document.querySelector(".table-registros").innerHTML = data;
+    }
+}
+
+async function excluirSaida(id) {
+    let response = await fetch("/../src/controllers/excluir.php?saida="+id);
+    let data = await response.text();
+
+    if(data = "ok") {
+        let response = await fetch("/../src/controllers/tabela.php");
+        let data = await response.text();
+
+        document.querySelector(".table-registros").innerHTML = data;
+    }
 }
 
 
