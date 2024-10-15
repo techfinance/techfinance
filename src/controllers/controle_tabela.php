@@ -41,9 +41,9 @@
             echo "<td>$value</td>";
           }
           if($dados[$i]["tipo_transacao"] == "Saída"){
-            echo "<td><i class='bi bi-trash-fill' onclick='excluirSaida(". $dados[$i]["id"] .")' style='cursor: pointer; color:var(--primary-red);'></i></td>";
+            echo "<td><i class='bi bi-trash-fill' onclick='excluirSaida(". $dados[$i]["id"] .",". $dados[$i]["valor"] . ")' style='cursor: pointer; color:var(--primary-red);'></i></td>";
           } else {
-            echo "<td><i class='bi bi-trash-fill' onclick='excluirEntrada(". $dados[$i]["id"] .")' style='cursor: pointer;color:var(--primary-red);'></i></td>";
+            echo "<td><i class='bi bi-trash-fill' onclick='excluirEntrada(". $dados[$i]["id"] ."," . $dados[$i]["valor"] .")' style='cursor: pointer;color:var(--primary-red);'></i></td>";
           }
           
           echo "</tr>";

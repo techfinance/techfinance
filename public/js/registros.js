@@ -109,8 +109,8 @@ async function ajaxEntrada(nomeEntrada, valor) {
     
 }
 
-async function excluirEntrada(id) {
-    let response = await fetch("/../src/controllers/excluir.php?entrada="+id);
+async function excluirEntrada(id, valor) {
+    let response = await fetch("/../src/controllers/excluir.php?entrada="+id+"&valor="+valor);
     let data = await response.text();
 
     if(data = "ok") {
@@ -121,8 +121,8 @@ async function excluirEntrada(id) {
     }
 }
 
-async function excluirSaida(id) {
-    let response = await fetch("/../src/controllers/excluir.php?saida="+id);
+async function excluirSaida(id, valor) {
+    let response = await fetch("/../src/controllers/excluir.php?saida="+id+"&valor="+valor);
     let data = await response.text();
 
     if(data = "ok") {
