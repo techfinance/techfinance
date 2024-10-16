@@ -78,3 +78,10 @@ table {
     font-size: 14px;
 }
 
+.lembrete {
+    width: 70px;
+}
+
+th {
+    font-weight: 500;
+}

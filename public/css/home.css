@@ -1,14 +1,11 @@
-.dica {
-    width: 300px;
-    flex-basis: 300px;
-}
-
 .title-home {
     flex-shrink: 2;
 }
 
 .ideia {
-    width: 350px;
+    width: 300px;
+    margin: auto;
+    font-size: 14px;
 }
 
 h3 {
@@ -41,4 +38,10 @@ h3 {
 
 .negative {
     color: var(--primary-red);
+}
+
+.lampada {
+    display: block;
+    margin: 4px auto;
+    width: 60px;
 }

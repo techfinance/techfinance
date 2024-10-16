@@ -10,7 +10,7 @@ if(!isset($_SESSION["id_usuario"])){
         <p>Registre sua despesa ou entrada e mantenha suas finanças em dia</p>
       </div>
         
-        <img src="./images/lembrete.svg" alt="lembrete">
+        <img src="./images/lembrete.svg" alt="lembrete" class="lembrete">
         <h3>Lembrete</h3>
         <p>Antes de comprar, pergunte-se: isso é uma necessidade ou um desejo?</p>
 
@@ -105,7 +105,7 @@ if(!isset($_SESSION["id_usuario"])){
   <thead>
   <tr><th colspan="7" class="text-center" style="font-weight: 600;">Últimos Registros</th></tr>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">N&deg;</th>
       <th scope="col">Tipo</th>
       <th scope="col">Descrição</th>
       <th scope="col">Categoria</th>

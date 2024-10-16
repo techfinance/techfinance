@@ -7,8 +7,8 @@
       <p>Espero que esteja bem. Vamos dar uma olhada nas suas finanças? Veja como está seu progresso e continue no caminho certo para alcançar suas metas!</p>
     </div>
     <div class="col-md-4 text-center ideia">
-      <img src="./images/ideia.svg" alt="lampada">
-      <h4>Dica do Dia</h4>
+      <img src="./images/lamp.svg" alt="lampada" class="lampada">
+      <h5 style="font-weight: 600;">Dica do Dia</h5>
       <p>Registre cada gasto, cada centavo conta!</p>
     </div>
   </div>
