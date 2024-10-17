@@ -16,7 +16,7 @@
             break;
           }
           echo "<tr>";
-          echo "<td>$i</td>";
+          echo "<td>". $i+1 ."</td>";
           foreach($dados[$i] as $key => $value){
             if($key == "id"){
               continue;

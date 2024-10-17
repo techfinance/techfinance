@@ -65,10 +65,6 @@ select option {
     padding-bottom: 20px;
 }
 
-.table-responsive {
-    margin-bottom: 20px;
-}
-
 .negado-entrada {
     color: var(--primary-red);
     font-weight: 600;
@@ -84,4 +80,8 @@ table {
 
 th {
     font-weight: 500;
+}
+
+table {
+    border: 1px solid;
 }

@@ -103,7 +103,7 @@ if(!isset($_SESSION["id_usuario"])){
     <table class="table table-striped table-hover flex-grow-1 flex-shrink-1">
       
   <thead>
-  <tr><th colspan="7" class="text-center" style="font-weight: 600;">Últimos Registros</th></tr>
+  <div class="text-center" style="font-weight: 600; font-size: 14px;">Últimos Registros</div>
     <tr>
       <th scope="col">N&deg;</th>
       <th scope="col">Tipo</th>
@@ -114,7 +114,7 @@ if(!isset($_SESSION["id_usuario"])){
       <th scope="col"></th>
     </tr>
   </thead>
-  <tbody class="table-registros">
+  <tbody class="table-registros ">
     <?php
       include "../../src/controllers/controle_tabela.php";
 
