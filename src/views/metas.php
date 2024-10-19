@@ -6,7 +6,7 @@
         jornada rumo a uma vida financeira saudável!</p>
 
         <ol class="list-group list-group-numbered">
-            <li class="list-group-item d-flex justify-content-between align-items-start">
+            <li class="list-group-item d-flex flex-wrap justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
                     <div class="fw-bold">Reduzir gastos com lazer a R$250,00/mês</div>
                     <div class="progress-stacked">
@@ -18,9 +18,12 @@
                         </div>
                     </div>
                 </div>
-                <span class="badge text-bg-danger rounded-pill">20% para o limite</span>
+                <div>
+                    <span class="badge text-bg-danger rounded-pill">20% para o limite</span>
+                    <i class="bi bi-three-dots"></i>
+                </div>   
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
+            <li class="list-group-item d-flex flex-wrap justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
                 <div class="fw-bold" >Limitar gastoso com mercado a R$ 2.000,00/mês</div>
                     <div class="progress-stacked">
@@ -32,9 +35,12 @@
                         </div>
                     </div>
                 </div>
-                <span class="badge text-bg-warning rounded-pill">30% para o limite</span>
+                <div>
+                    <span class="badge text-bg-warning rounded-pill">30% para o limite</span>
+                    <i class="bi bi-three-dots"></i>
+                </div>    
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
+            <li class="list-group-item d-flex flex-wrap justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
                 <div class="fw-bold">Limitar gastos com Lazer a R$ 400,00/mês</div>
                     <div class="progress-stacked">
@@ -46,7 +52,11 @@
                         </div>
                     </div>
                 </div>
-                <span class="badge rounded-pill primary-green">70% para o limite</span>
+                <div>
+                    <span class="badge rounded-pill primary-green">70% para o limite</span>
+                    <i class="bi bi-three-dots"></i>
+                </div>
+                
             </li>
         </ol>
 
@@ -92,7 +102,7 @@
                           </div>
                           <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Descrição adicional</label>
-                                <textarea class="form-control form-despesa-input" id="descricao-meta" rows="1"></textarea>
+                                <textarea class="form-control form-despesa-input" id="descricao-meta" rows="2"></textarea>
                             </div>
                         </form>
                         <div class="sucesso-registro text-center" hidden>Meta registrada!</div>
