@@ -8,7 +8,6 @@ function waitForElement(querySelector, callback){
 
 waitForElement("#form-saida", () => {
     const formGasto = document.querySelector("#form-saida");
-    const categoriaDespesa = document.querySelector("#categoriaDespesa");
     const categoriaNome = document.querySelector("#categoriaNome");
 
     let interval = setInterval(() => {
@@ -19,7 +18,7 @@ waitForElement("#form-saida", () => {
         }
     }, 100);
 
-    formGasto.addEventListener("submit", (e) => {
+    formGasto.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const categoria = document.querySelector("#categoriaDespesa");
@@ -33,6 +32,12 @@ waitForElement("#form-saida", () => {
 
         if(categoriaDespesa === "Outros"){
             categoriaDespesa = nomeCategoria.value;
+            tipoCategoria = "usuario";
+
+            await ajaxCreateCategoria(categoriaDespesa).then(data => {
+                console.log(data);
+                idCategoria = data;
+            });
         }
 
         document.querySelector("#nomeDespesa").value = "";
@@ -40,7 +45,7 @@ waitForElement("#form-saida", () => {
         document.querySelector("#valor").value = "";
         categoriaNome.value = "";
 
-        ajaxGastos(nomeDespesa, categoriaDespesa, valor, tipoCategoria, idCategoria).finally(async () => {
+        await ajaxGastos(nomeDespesa, categoriaDespesa, valor, tipoCategoria, idCategoria).finally(async () => {
             let response = await fetch("/../src/controllers/controle_tabela.php");
             let data = await response.text();
 
@@ -76,6 +81,14 @@ waitForElement("#form-entrada", () => {
     clearInterval();
 })
 
+//criar categoria ao escolher outros em categoria e retorna o id da categoria criada
+async function ajaxCreateCategoria(categoriaNome){
+    let response = await fetch("/../src/controllers/controle_categoria.php?" + new URLSearchParams({nome_categoria: categoriaNome,}).toString());
+
+    let data = await response.text();
+    return data;
+}
+
 
 async function ajaxGastos(nomeDespesa, categoriaDespesa, valor, tipo, id) {
     let response = await fetch("/../src/controllers/controle_gasto.php?" + new URLSearchParams({
@@ -89,12 +102,11 @@ async function ajaxGastos(nomeDespesa, categoriaDespesa, valor, tipo, id) {
     if(!response.ok){
         console.log(response.status);
     }
-    let data = await response.text();
     
     document.querySelector(".sucesso-registro").hidden = false;
     setTimeout(() => {
         document.querySelector(".sucesso-registro").hidden = true;
-    }, 5000);
+    }, 3000);
 }
 
 
@@ -111,7 +123,7 @@ async function ajaxEntrada(nomeEntrada, valor) {
     document.querySelector(".sucesso-entrada").hidden = false;  
     setTimeout(() => {
     document.querySelector(".sucesso-entrada").hidden = true;
-    }, 5000);
+    }, 3000);
     
 }
 

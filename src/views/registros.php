@@ -62,24 +62,14 @@ if(!isset($_SESSION["id_usuario"])){
                                     echo "<option value='$nome' class='categorias' data-tipo='$tipo' data-id='$id'>$nome</option>";
                                   }
                                 }
-
-                              
                               ?>
 
                               <option value="Outros">Outros</option>
                             </select>
                           </div>
-                          <div class="row align-items-center mb-3" id="categoriaNome" hidden>
-                            <div class="col">
+                          <div class="mb-3" id="categoriaNome" hidden>
                               <label for="textCategoria" class="form-label">Nome da Categoria</label>
                               <input type="text" class="form-control form-despesa-input" id="textCategoria" >
-                            </div>
-                            <div class="col">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
-                                Salvar
-                              </label>
-                            </div>
                           </div>
                           <div class="mb-3">
                             <label for="valor" class="form-label">Valor</label>
