@@ -21,11 +21,15 @@ waitForElement("#form-saida", () => {
 
     formGasto.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        const categoria = document.querySelector("#categoriaDespesa");
         
         let nomeDespesa = document.querySelector("#nomeDespesa").value;
-        let categoriaDespesa = document.querySelector("#categoriaDespesa").value;
+        let categoriaDespesa = categoria.value;
         let valor = document.querySelector("#valor").value;
-        let nomeCategoria = document.querySelector("#textCategoria")
+        let nomeCategoria = document.querySelector("#textCategoria");
+        let tipoCategoria = categoria.options[categoria.selectedIndex]?.dataset.tipo;
+        let idCategoria = categoria.options[categoria.selectedIndex]?.dataset.id;
 
         if(categoriaDespesa === "Outros"){
             categoriaDespesa = nomeCategoria.value;
@@ -36,7 +40,7 @@ waitForElement("#form-saida", () => {
         document.querySelector("#valor").value = "";
         categoriaNome.value = "";
 
-        ajaxGastos(nomeDespesa, categoriaDespesa, valor).finally(async () => {
+        ajaxGastos(nomeDespesa, categoriaDespesa, valor, tipoCategoria, idCategoria).finally(async () => {
             let response = await fetch("/../src/controllers/controle_tabela.php");
             let data = await response.text();
 
@@ -73,11 +77,13 @@ waitForElement("#form-entrada", () => {
 })
 
 
-async function ajaxGastos(nomeDespesa, categoriaDespesa, valor) {
+async function ajaxGastos(nomeDespesa, categoriaDespesa, valor, tipo, id) {
     let response = await fetch("/../src/controllers/controle_gasto.php?" + new URLSearchParams({
         nome: nomeDespesa,
         categoria: categoriaDespesa,
-        valor: valor
+        valor: valor,
+        tipo: tipo,
+        id: id,
     }).toString());
 
     if(!response.ok){

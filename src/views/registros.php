@@ -33,17 +33,53 @@ if(!isset($_SESSION["id_usuario"])){
                             <label for="categoriaDespesa" class="form-label">Categoria da Despesa</label>
                             <select class="form-select form-despesa-input" aria-label="Default select example" id="categoriaDespesa" required>
                               <option selected disabled>Selecione</option>
-                              <option value="Geral">Geral</option>
-                              <option value="Lazer">Lazer</option>
-                              <option value="Alimentação">Alimentação</option>
-                              <option value="Transporte">Transporte</option>
-                              <option value="Saúde">Saúde</option>
+                              <?php
+                                spl_autoload_register(function ($class_name) {
+                                  include "$_SERVER[DOCUMENT_ROOT]/src/models/" . $class_name . '.php';
+                                });
+
+                                $id = $_SESSION["id_usuario"];
+                                $categorias = new Categoria("tech_finance1", "localhost", "root", "");
+
+                                $data = $categorias->getAllCategoria($id);
+
+                                if(count($data) > 0) {
+                                  for($i = 0; $i < count($data); $i++){
+                                    foreach($data[$i] as $key => $value){
+                                      if($key == "usuario_id_usuario"){
+                                        if($value == null){
+                                          $tipo = "padrao";
+                                        } else $tipo = "usuario";
+                                      }
+                                      if($key == "nome"){
+                                        $nome = $value;
+                                      }
+                                      if($key == "id"){
+                                        $id = $value;
+                                      }
+                                    }
+
+                                    echo "<option value='$nome' class='categorias' data-tipo='$tipo' data-id='$id'>$nome</option>";
+                                  }
+                                }
+
+                              
+                              ?>
+
                               <option value="Outros">Outros</option>
                             </select>
                           </div>
-                          <div class="mb-3" id="categoriaNome" hidden>
-                            <label for="textCategoria" class="form-label">Nome da Categoria</label>
-                            <input type="text" class="form-control form-despesa-input" id="textCategoria" >
+                          <div class="row align-items-center mb-3" id="categoriaNome" hidden>
+                            <div class="col">
+                              <label for="textCategoria" class="form-label">Nome da Categoria</label>
+                              <input type="text" class="form-control form-despesa-input" id="textCategoria" >
+                            </div>
+                            <div class="col">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                Salvar
+                              </label>
+                            </div>
                           </div>
                           <div class="mb-3">
                             <label for="valor" class="form-label">Valor</label>
@@ -61,7 +97,7 @@ if(!isset($_SESSION["id_usuario"])){
                     </div>
                 </div>
             </div>
-        </div>
+        </div>                    
         <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" data-bs-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content modal-form">

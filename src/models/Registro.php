@@ -2,18 +2,23 @@
     class Registro extends Carteira {
 
         //cadastra saida
-        public function cadastrarDespesa($tipo, $categoria, $valor, $id) {
+        public function cadastrarDespesa($tipo, $categoria, $valor, $tipoCategoria, $idCategoria, $id) {
             $sql = $this->pdo->query("SELECT id_carteira FROM carteira WHERE usuario_id_usuario = $id");
             $id_carteira = $sql->fetch();
             
-            $sql = $this->pdo->prepare("INSERT INTO saida (tipo, categoria, valor, usuario_id_usuario, carteira_id_carteira) VALUES (:t, :c, :v, :i, :f)");
+            if($tipoCategoria == "padrao"){
+                $sql = $this->pdo->prepare("INSERT INTO saida (tipo, categoria, valor, usuario_id_usuario, carteira_id_carteira, categoria_id_categoria) VALUES (:t, :c, :v, :i, :f, :g)");
+            } else {
+                $sql = $this->pdo->prepare("INSERT INTO saida (tipo, categoria, valor, usuario_id_usuario, carteira_id_carteira, categoriau_id_categoriau) VALUES (:t, :c, :v, :i, :f, :g)");
+            }
+            
             $sql->bindValue(":t", $tipo);
             $sql->bindValue(":c", $categoria);
             $sql->bindValue(":v", $valor);
             $sql->bindValue(":i", $id);
             $sql->bindValue(":f", $id_carteira["id_carteira"]);
+            $sql->bindValue(":g", $idCategoria);
             $sql->execute();
-
             return true;
         }
 
