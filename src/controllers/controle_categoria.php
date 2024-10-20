@@ -17,8 +17,11 @@
             $dados = $categoria->getCategoriau($nome_categoria);
             echo $dados["id_categoriau"];
 
+        } else {
+            echo "Erro ao criar categoria.";
         }
-        
+    } else {
+        echo "Nome da categoria não fornecido.";
     }
 
 

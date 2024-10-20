@@ -9,9 +9,10 @@ function waitForElement(querySelector, callback){
 waitForElement("#form-saida", () => {
     const formGasto = document.querySelector("#form-saida");
     const categoriaNome = document.querySelector("#categoriaNome");
+    const categoria = document.querySelector("#categoriaDespesa");
 
-    let interval = setInterval(() => {
-        if(categoriaDespesa.value === "Outros"){
+    const interval = setInterval(() => {
+        if(categoria.value === "Outros"){
             categoriaNome.hidden = false;
         } else {
             categoriaNome.hidden = true;
@@ -33,11 +34,13 @@ waitForElement("#form-saida", () => {
         if(categoriaDespesa === "Outros"){
             categoriaDespesa = nomeCategoria.value;
             tipoCategoria = "usuario";
-
-            await ajaxCreateCategoria(categoriaDespesa).then(data => {
-                console.log(data);
-                idCategoria = data;
-            });
+            try {
+                idCategoria = await ajaxCreateCategoria(categoriaDespesa);
+            } catch (error) {
+                console.error('Erro ao criar categoria:', error);
+                return;
+            }
+            
         }
 
         document.querySelector("#nomeDespesa").value = "";
@@ -53,8 +56,6 @@ waitForElement("#form-saida", () => {
         })
 
         });
-
-        clearInterval();
 
 });
 
@@ -84,6 +85,11 @@ waitForElement("#form-entrada", () => {
 //criar categoria ao escolher outros em categoria e retorna o id da categoria criada
 async function ajaxCreateCategoria(categoriaNome){
     let response = await fetch("/../src/controllers/controle_categoria.php?" + new URLSearchParams({nome_categoria: categoriaNome,}).toString());
+
+    if(!response.ok){
+        console.log(response.status);
+        throw new Error('Falha ao criar categoria');
+    }
 
     let data = await response.text();
     return data;

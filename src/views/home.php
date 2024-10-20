@@ -16,10 +16,10 @@
     <div class="col-md">
     <h3>Carteira</h3>
       <div class="carteira">
-        <p id="valor-carteira"><?php 
+        <?php 
           require_once "$_SERVER[DOCUMENT_ROOT]/src/controllers/valor_carteira.php";
 
-        ?></p>
+        ?>
         <a href="#" id="homeRegistros" onclick="getPage('registros')">Conferir registros</a>
       </div>
     </div>

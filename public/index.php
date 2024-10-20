@@ -37,6 +37,5 @@
     
     <script src="js/main.js"></script>
     <script src="js/registros.js"></script>
-    <script src="js/home.js"></script>
 </body>
 </html>

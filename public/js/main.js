@@ -10,11 +10,11 @@ const email = urlParams.get('email');
 // mensagens erro login-cadastro
 if(login == 'false')
     loginMessage.hidden = false; 
-if(senha == 'false')
+else if(senha == 'false')
     getMessage("#notEqual");
-if(email == 'false')
+else if(email == 'false')
     getMessage("#notEmail");
-if(email == 'true')
+else if(email == 'true')
     getMessage("#cadastro-ok");
 
 function getMessage(element){

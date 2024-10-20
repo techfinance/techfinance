@@ -2,8 +2,9 @@
     class Categoria extends Banco {
         
         public function setCategoriau($nome_categoria, $id_usuario){
-            $sql = $this->pdo->prepare("SELECT id_categoriau FROM categoriau WHERE nome_categoriau = :n");
+            $sql = $this->pdo->prepare("SELECT id_categoriau FROM categoriau WHERE nome_categoriau = :n AND usuario_id_usuario = :u");
             $sql->bindValue(":n", $nome_categoria);
+            $sql->bindValue(":u", $id_usuario);
             $sql->execute();
 
             if($sql->rowCount() > 0){

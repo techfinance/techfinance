@@ -6,6 +6,8 @@
   $carteira = new Carteira("tech_finance1", "localhost", "root", "");
 
   $valor =  $carteira->valorCarteira($_SESSION["id_usuario"]);
-  echo "R$ ".number_format($valor,2,",",".");
-
-?>
+  ?> 
+  
+  <p id="valor-carteira" class="<?php if($valor > 0) echo "positive"; else echo "negative"?>">
+    <?php echo "R$ ".number_format($valor,2,",",".");?>
+  </p>
