@@ -22,7 +22,7 @@ if(!isset($_SESSION["id_usuario"])){
                     
                     $dados = $metas->getMetas($id_usuario);
 
-                    // CRIAÇÃO DA LISTA DE METAS EM PROGRESSO
+                    // criação da lista das metas em progresso
                     if(count($dados) > 0){
                         for($i = 0; $i < count($dados); $i++){
                             if($dados[$i]["META_STATUS"] == "progresso"){
@@ -80,9 +80,9 @@ if(!isset($_SESSION["id_usuario"])){
                             </div>
                             <div>
                                 <span class="badge <?php echo $classPercent ?> rounded-pill"><?php echo round($percentRest); ?>% para o limite</span>
-                                    <!-- Button trigger modal -->
+                                    <!-- trigger modal -->
                                 <i class="bi bi-three-dots" data-bs-toggle="modal" data-bs-target="#detalhesModal<?php echo $i?>" style="cursor: pointer;"></i>
-                                    <!-- Modal -->
+                                    <!-- Modal status meta-->
                                 <div class="modal fade" id="detalhesModal<?php echo $i?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content modal-metas">
@@ -91,18 +91,20 @@ if(!isset($_SESSION["id_usuario"])){
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <ul class="list-group list-group-flush">
+                                        <ul class="list-group">
                                             <li class="list-group-item"><?php echo $descricaoMeta; ?></li>
-                                            <li class="list-group-item">Restam <?php 
+                                            <li class="list-group-item">Você usou <strong><?php echo round($percentDiff) ?>%</strong> do seu limite.</li>
+                                            <li class="list-group-item">Data limite: <?php 
+                                            $data_edit = DateTime::createFromFormat('Y-m-d', $dados[$i]["META_DATA"]);
+                                            echo $data_edit->format('d/m/Y');
+                                            ?><br>
+                                                Restam <?php 
                                                 $now = time(); // data atual
                                                 $your_date = strtotime($dados[$i]["META_DATA"]);
                                                 $datediff = $now - $your_date;
                                                 echo round($datediff / (60 * 60 * 24))*-1;  
-                                            ?> dias</li>
-                                            <li class="list-group-item">Data limite: <?php 
-                                            $data_edit = DateTime::createFromFormat('Y-m-d', $dados[$i]["META_DATA"]);
-                                            echo $data_edit->format('d/m/Y');
-                                            ?></li>
+                                            ?> dias.
+                                        </li>
                                         </ul>
      
                                     </div>
@@ -118,9 +120,9 @@ if(!isset($_SESSION["id_usuario"])){
                         }  ?>
 
                         <a href="#" data-bs-toggle="modal" data-bs-target="#metas-concluidas" id="botao-metas-concluidas">
-                        Metas Concluídas
+                        Metas Finalizadas
                         </a>
-                        <!-- Modal concluídas -->
+                        <!-- Modal concluidas -->
                         <div class="modal fade" id="metas-concluidas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog scrollable">
                                 <div class="modal-content modal-metas">

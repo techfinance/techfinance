@@ -18,13 +18,17 @@
       <div class="carteira">
         <?php 
           require_once "$_SERVER[DOCUMENT_ROOT]/src/controllers/valor_carteira.php";
-
         ?>
         <a href="#" id="homeRegistros" onclick="getPage('registros')">Conferir registros</a>
       </div>
     </div>
     <div class="col-md">
       <h3>Suas Metas</h3>
+      <div class="metas-home">
+        
+
+      </div>
+
     </div>
     <div class="col-md">
       <h3>Seus sonhos</h3>
