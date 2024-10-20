@@ -11,87 +11,104 @@ if(!isset($_SESSION["id_usuario"])){
         jornada rumo a uma vida financeira saudável!</p>
 
         <ol class="list-group list-group-numbered">
-            <li class="list-group-item d-flex flex-wrap justify-content-between align-items-start">
                 <?php
+                    spl_autoload_register(function ($class_name) {
+                        include "$_SERVER[DOCUMENT_ROOT]/src/models/" . $class_name . '.php';
+                      });
+
+                    $id_usuario = $_SESSION["id_usuario"];
+                    $metas = new Meta("tech_finance1", "localhost", "root", "");
+                    
+                    $dados = $metas->getMetas($id_usuario);
+                    
+                    if(count($dados) > 0){
+                        for($i = 0; $i < count($dados); $i++){
+                            $valorMeta = $dados[$i]["VALOR"];
+                            $descricaoMeta = $dados[$i]["DESCRICAO"];
+                            $somaSaidas = $metas->getSomaSaidas($dados[$i]["ID_META"], $id_usuario);
+                            $valorDiff = $valorMeta - $somaSaidas;
+                            $percentDiff = $somaSaidas / $valorMeta * 100;
+                            $percentRest = 100 - $percentDiff;
+                            $date = date('Y-m-d');
+
+                            $classPercent = "";
+
+                            if($percentRest >= 70){
+                                $classPercent = "primary-green";
+                            } else if($percentRest < 70 && $percentRest >= 25){
+                                $classPercent = "bg-warning";
+                            } else {
+                                $classPercent = "bg-danger";
+                            }
+                            if($dados[$i]["META_DATA"] == $date) {
+
+                                continue;
+                            }
+                            
+                            ?>
 
 
-                
+                        <li class="list-group-item d-flex flex-wrap justify-content-between align-items-start">
+                            
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Reduzir gastos com <?php
+                                    $categoria = new Categoria("tech_finance1", "localhost", "root", "");
+                                    $data = $categoria->getCategoriaName($dados[$i]["Categoria_ID_CATEGORIA"], $dados[$i]["CategoriaU_ID_CATEGORIAU"], $id_usuario);
+                                    echo $data["nome_categoria"];
+                                ?> a R$ <?php echo number_format($valorMeta,2,",",".") ?></div>
+                                <div class="progress-stacked">
+
+                                    <div class="progress" role="progressbar" aria-label="Segment one" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percentDiff; ?>%">
+                                        <div class="progress-bar <?php echo $classPercent ?> fw-bold" style="font-size: 10px;">R$<?php echo number_format($somaSaidas,2,",",".") ?></div>
+                                    </div>
+                                    <div class="progress" role="progressbar" aria-label="Segment two" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percentRest; ?>%">
+                                        <div class="progress-bar bg-dark fw-bold" style="font-size: 10px;">R$<?php echo number_format($valorDiff,2,",",".") ?></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="badge <?php echo $classPercent ?> rounded-pill"><?php echo round($percentRest); ?>% para o limite</span>
+                                    <!-- Button trigger modal -->
+                                <i class="bi bi-three-dots" data-bs-toggle="modal" data-bs-target="#detalhesModal<?php echo $i?>" style="cursor: pointer;"></i>
+                                    <!-- Modal -->
+                                <div class="modal fade" id="detalhesModal<?php echo $i?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                    <div class="modal-header" style="border: none;">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel" >Detalhes</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><?php echo $descricaoMeta; ?></li>
+                                            <li class="list-group-item">Restam <?php 
+                                                $now = time(); // data atual
+                                                $your_date = strtotime($dados[$i]["META_DATA"]);
+                                                $datediff = $now - $your_date;
+                                                echo round($datediff / (60 * 60 * 24))*-1;  
+                                            ?> dias</li>
+                                            <li class="list-group-item">DATA LIMITE: <?php 
+                                            $data_edit = DateTime::createFromFormat('Y-m-d', $dados[$i]["META_DATA"]);
+                                            echo $data_edit->format('d/m/Y');
+                                            ?></li>
+                                        </ul>
+                                        
+                                        
+                                    </div>
+                                    <div class="modal-footer" style="border: none;">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border: none;">Fechar</button>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div> 
+                        </li>
+                     <?php  }
+
+                    } else {
+                        echo "Não há registros";
+                    }
                 ?>
-            </li>
-
-            <!-- MODEL LI -->
-            <li class="list-group-item d-flex flex-wrap justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Reduzir gastos com lazer a R$250,00/mês</div>
-                    <div class="progress-stacked">
-                        <div class="progress" role="progressbar" aria-label="Segment one" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                            <div class="progress-bar bg-danger fw-bold" style="font-size: 10px;">R$200,00</div>
-                        </div>
-                        <div class="progress" role="progressbar" aria-label="Segment two" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                            <div class="progress-bar bg-dark fw-bold" style="font-size: 10px;">R$50,00</div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <span class="badge text-bg-danger rounded-pill">20% para o limite</span>
-                        <!-- Button trigger modal -->
-                    <i class="bi bi-three-dots" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-                        <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Detalhes</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border: none;">Close</button>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>   
-            </li>
-
-
-            <li class="list-group-item d-flex flex-wrap justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                <div class="fw-bold" >Limitar gastoso com mercado a R$ 2.000,00/mês</div>
-                    <div class="progress-stacked">
-                        <div class="progress" role="progressbar" aria-label="Segment one" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                <div class="progress-bar bg-warning fw-bold" style="font-size: 10px;">R$1600,00</div>
-                        </div>
-                        <div class="progress" role="progressbar" aria-label="Segment two" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-                            <div class="progress-bar bg-dark fw-bold" style="font-size: 10px;">R$400,00</div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <span class="badge text-bg-warning rounded-pill">30% para o limite</span>
-                    <i class="bi bi-three-dots"></i>
-                </div>    
-            </li>
-            <li class="list-group-item d-flex flex-wrap justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                <div class="fw-bold">Limitar gastos com Lazer a R$ 400,00/mês</div>
-                    <div class="progress-stacked">
-                        <div class="progress" role="progressbar" aria-label="Segment one" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-                                <div class="progress-bar fw-bold primary-green" style="font-size: 10px;">R$120,00</div>
-                        </div>
-                        <div class="progress" role="progressbar" aria-label="Segment two" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                            <div class="progress-bar bg-dark fw-bold" style="font-size: 10px;">R$280,00</div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <span class="badge rounded-pill primary-green">70% para o limite</span>
-                    <i class="bi bi-three-dots"></i>
-                </div>
-                
-            </li>
         </ol>
     </div>
     

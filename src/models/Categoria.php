@@ -37,6 +37,32 @@
             return $dados;
         }
 
+        public function getCategoriaName($id_categoria, $id_categoriau, $id_usuario) {
+            if(!isset($id_categoria)){
+                $sql = $this->pdo->prepare("SELECT nome_categoriau AS nome_categoria FROM categoriau WHERE id_categoriau = :d AND usuario_id_usuario = :i");
+                $sql->bindValue(":d", $id_categoriau);
+                $sql->bindValue(":i", $id_usuario);
+                $sql->execute();
+
+                $dado = $sql->fetch();
+
+                return $dado;
+
+            } else {
+                $sql = $this->pdo->prepare("SELECT nome_categoria FROM categoria WHERE id_categoria = :d");
+                $sql->bindValue(":d", $id_categoria);
+                $sql->execute();
+
+                $dado = $sql->fetch();
+
+                return $dado;
+            }
+
+            
+
+
+        }
+
     }
 
 
