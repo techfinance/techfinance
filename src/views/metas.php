@@ -5,6 +5,7 @@ if(!isset($_SESSION["id_usuario"])){
 ?>
 <div class="container-fuid d-flex flex-wrap p-2 container-metas">
 
+    <!-- REGISTRO DAS METAS CRIADAS -->
     <div class="metas">
         <h1>Suas Metas</h1>
         <p>Acompanhe seu progresso e mantenha-se motivado, pois cada passo é importante na sua
@@ -20,9 +21,12 @@ if(!isset($_SESSION["id_usuario"])){
                     $metas = new Meta("tech_finance1", "localhost", "root", "");
                     
                     $dados = $metas->getMetas($id_usuario);
-                    
+
+                    // CRIAÇÃO DA LISTA DE METAS EM PROGRESSO
                     if(count($dados) > 0){
                         for($i = 0; $i < count($dados); $i++){
+                            if($dados[$i]["META_STATUS"] == "progresso"){
+
                             $valorMeta = $dados[$i]["VALOR"];
                             $descricaoMeta = $dados[$i]["DESCRICAO"];
                             $somaSaidas = $metas->getSomaSaidas($dados[$i]["ID_META"], $id_usuario);
@@ -40,11 +44,19 @@ if(!isset($_SESSION["id_usuario"])){
                             } else {
                                 $classPercent = "bg-danger";
                             }
-                            if($dados[$i]["META_DATA"] == $date) {
 
+                            // se ultrapassar limite
+                            if($somaSaidas > $valorMeta){
+                                $metas->setMetaNaoConcluida($dados[$i]["ID_META"], $id_usuario);
                                 continue;
                             }
-                            
+
+                            //se alcançar data limite
+                            if($dados[$i]["META_DATA"] == $date) {
+                                $metas->setMetaConcluida($dados[$i]["ID_META"], $id_usuario);
+                                continue;
+                            }
+
                             ?>
 
 
@@ -73,7 +85,7 @@ if(!isset($_SESSION["id_usuario"])){
                                     <!-- Modal -->
                                 <div class="modal fade" id="detalhesModal<?php echo $i?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
+                                    <div class="modal-content modal-metas">
                                     <div class="modal-header" style="border: none;">
                                         <h1 class="modal-title fs-5" id="exampleModalLabel" >Detalhes</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -87,13 +99,12 @@ if(!isset($_SESSION["id_usuario"])){
                                                 $datediff = $now - $your_date;
                                                 echo round($datediff / (60 * 60 * 24))*-1;  
                                             ?> dias</li>
-                                            <li class="list-group-item">DATA LIMITE: <?php 
+                                            <li class="list-group-item">Data limite: <?php 
                                             $data_edit = DateTime::createFromFormat('Y-m-d', $dados[$i]["META_DATA"]);
                                             echo $data_edit->format('d/m/Y');
                                             ?></li>
                                         </ul>
-                                        
-                                        
+     
                                     </div>
                                     <div class="modal-footer" style="border: none;">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border: none;">Fechar</button>
@@ -104,9 +115,56 @@ if(!isset($_SESSION["id_usuario"])){
                             </div> 
                         </li>
                      <?php  }
+                        }  ?>
 
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#metas-concluidas" id="botao-metas-concluidas">
+                        Metas Concluídas
+                        </a>
+                        <!-- Modal concluídas -->
+                        <div class="modal fade" id="metas-concluidas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog scrollable">
+                                <div class="modal-content modal-metas">
+                                    <div class="modal-header" style="border: none;">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Metas Concluídas</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul class="list-group">
+                                            <?php
+
+                                                //METAS CONCLUIDAS OU NÃO ATINGIDAS
+                                                for($i = 0; $i < count($dados); $i++){
+                                                    if($dados[$i]["META_STATUS"] == "concluido" || $dados[$i]["META_STATUS"] == "nao concluido"){
+                                                        $valorMeta = $dados[$i]["VALOR"];
+                                                        $descricaoMeta = $dados[$i]["DESCRICAO"];
+                                                        
+                                                    ?>
+                                                        <li class="list-group-item">
+                                                            <?php 
+                                                            $categoria = new Categoria("tech_finance1", "localhost", "root", "");
+                                                            $data = $categoria->getCategoriaName($dados[$i]["Categoria_ID_CATEGORIA"], $dados[$i]["CategoriaU_ID_CATEGORIAU"], $id_usuario);
+                                                            
+                                                            echo "R$ ".number_format($valorMeta,2,",",".")." com ". $data["nome_categoria"] ."<br><strong>Descrição: </strong>".$descricaoMeta;
+                                                            echo "<br> <strong>Data de criação: </strong>".$dados[$i]["data_criacao"];
+                                                            echo "<br> <strong>Data de conclusão: </strong>".$dados[$i]["META_DATA"];
+                                                            echo "<br> <strong>Status da meta: </strong>".$dados[$i]["META_STATUS"]
+                                                            ?>
+                                                        </li>
+
+                                            <?php  }
+                                                }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer" style="border: none;">
+                                        <button type="button" class="btn" data-bs-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                <?php 
                     } else {
-                        echo "Não há registros";
+                        echo "<p>Não há registros</p>";
                     }
                 ?>
         </ol>
@@ -191,8 +249,5 @@ if(!isset($_SESSION["id_usuario"])){
         <button class="btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" id="modal-registrar">Registrar</button>
     </div>
     
-
-
-
 </div>
 

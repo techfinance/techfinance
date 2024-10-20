@@ -13,14 +13,22 @@
     background-color: var(--primary-green);
     -webkit-box-shadow: none;
     box-shadow: none;
-      
 }
 
 .badge {
     margin: 10px 0 0 10px;
 }
 
+.modal-metas {
+    border: none;
+    border-radius: 15px;
+}
 
+#botao-metas-concluidas {
+    color: var(--primary-blue);
+    margin-top: 10px;
+    margin-left: 5px;
+}
 
 @media only screen and (min-width: 1000px) {
     .metas {

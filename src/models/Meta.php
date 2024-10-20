@@ -52,6 +52,25 @@
             return $soma;
         }
 
+        public function setMetaConcluida($meta_id, $id_usuario){
+            $sql = $this->pdo->prepare("UPDATE metas SET meta_status = 'concluido' WHERE id_meta = :im AND usuario_id_usuario = :iu");
+            $sql->bindValue(":im", $meta_id);
+            $sql->bindValue(":iu", $id_usuario);
+            $sql->execute();
+
+            return true;
+        }
+
+        public function setMetaNaoConcluida($meta_id, $id_usuario){
+            $sql = $this->pdo->prepare("UPDATE metas SET meta_status = 'nao concluido' WHERE id_meta = :im AND usuario_id_usuario = :iu");
+            $sql->bindValue(":im", $meta_id);
+            $sql->bindValue(":iu", $id_usuario);
+            $sql->execute();
+
+            return true;
+
+        }
+
     }
 
 ?>
