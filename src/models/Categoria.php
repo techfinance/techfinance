@@ -27,9 +27,10 @@
             return $dados;
         }
 
-        public function getCategoriau($nome_categoria){
-            $sql = $this->pdo->prepare("SELECT id_categoriau FROM categoriau WHERE nome_categoriau = :n");
+        public function getCategoriau($nome_categoria, $id_usuario){
+            $sql = $this->pdo->prepare("SELECT id_categoriau FROM categoriau WHERE nome_categoriau = :n AND usuario_id_usuario = :i");
             $sql->bindValue(":n", $nome_categoria);
+            $sql->bindValue(":i", $id_usuario);
             $sql->execute();
             $dados = $sql->fetch();
 

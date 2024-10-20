@@ -30,3 +30,5 @@ async function getPage(page) {
     const text = await response.text();
     main ? main.innerHTML = text : document.body.innerHTML = text;
 }
+
+

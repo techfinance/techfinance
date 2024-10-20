@@ -14,7 +14,7 @@
 
         if($categoria->setCategoriau($nome_categoria, $id)){
             
-            $dados = $categoria->getCategoriau($nome_categoria);
+            $dados = $categoria->getCategoriau($nome_categoria, $id);
             echo $dados["id_categoriau"];
 
         } else {
