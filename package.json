@@ -1,0 +1,22 @@
+{
+  "name": "techfinance",
+  "version": "1.0.0",
+  "description": "Projeto de desenvolvimento de software apresentado ao curso de Análise e Desenvolvimento de Sistemas da Universidade Cidade de São Paulo sob orientação dos professores Jadir Custódio Mendonça Júnior e Tatiana Da Silva Hortelano Vieco",
+  "main": "public/index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techfinance/techfinance.git"
+  },
+  "keywords": [
+    "finanças"
+  ],
+  "author": "Guilherme Gomes Caetano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/techfinance/techfinance/issues"
+  },
+  "homepage": "https://github.com/techfinance/techfinance#readme"
+}

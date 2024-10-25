@@ -1,5 +1,6 @@
 .container {
     color: var(--primary-blue);
     flex: 1;
+    margin-bottom: 60px; /* para o footer não sobrepor o conteúdo */
 }
 h1 {font-weight: 600;}

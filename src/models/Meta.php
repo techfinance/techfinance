@@ -36,6 +36,7 @@
                                         JOIN metas m ON (saida.categoriau_id_categoriau = m.categoriau_id_categoriau OR saida.categoria_id_categoria = m.categoria_id_categoria) 
                                         WHERE m.id_meta = :im 
                                         AND m.Usuario_ID_USUARIO = :iu
+                                        AND saida.Usuario_ID_USUARIO = :iu
                                         AND saida.SAIDA_DATA >= m.data_criacao;");
             $sql->bindValue(":im", $meta_id);
             $sql->bindValue(":iu", $id_usuario);

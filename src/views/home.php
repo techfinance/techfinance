@@ -31,7 +31,7 @@
 
     </div>
     <div class="col-md">
-      <h3>Seus sonhos</h3>
+      <h3>Seus Sonhos</h3>
     </div>
   </div>
 </div>

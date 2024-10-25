@@ -11,7 +11,7 @@ if(!isset($_SESSION["id_usuario"])){
         <p>Acompanhe seu progresso e mantenha-se motivado, pois cada passo é importante na sua
         jornada rumo a uma vida financeira saudável!</p>
 
-        <ol class="list-group list-group-numbered">
+        <ol class="list-group">
                 <?php
                     spl_autoload_register(function ($class_name) {
                         include "$_SERVER[DOCUMENT_ROOT]/src/models/" . $class_name . '.php';
