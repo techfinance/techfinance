@@ -1,10 +1,14 @@
+async function getChartData(url) {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+}
 
 waitForElement(".dashboard", async () => {
 
     const ctx = document.getElementById('myLineChart').getContext('2d');
     const dataBar = await getChartData('/../src/controllers/get_chart_data.php');
     const dataLine = await getChartData('/../src/controllers/get_chart_dataline.php');
-
 
         const myLineChart = new Chart(ctx, {
             type: 'line',
@@ -19,8 +23,8 @@ waitForElement(".dashboard", async () => {
                         tension: 0.1
                     },
                     {
-                        label: 'Saída',
-                        data: dataLine.saidas, // dados para saída
+                        label: 'Despesa',
+                        data: dataLine.saidas, // dados para despesa
                         fill: false,
                         borderColor: 'rgba(255, 99, 132, 1)',
                         tension: 0.1
@@ -106,8 +110,3 @@ waitForElement(".dashboard", async () => {
 });
 
 
-async function getChartData(url) {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-}

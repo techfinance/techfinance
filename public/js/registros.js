@@ -35,7 +35,7 @@ waitForElement("#main-table", () => {
                         }
                 },
                 "pagingType": "simple_numbers",
-                lengthMenu: [ 10, 25, 50 ],
+                lengthMenu: [ 10, 15, 25, 50 ],
                 ordering: false,
             });
         }

@@ -75,6 +75,18 @@
 
 }
 
+.dropdown-menu {
+    background-color: var(--primary-blue)!important;
+    color: white!important;
+    font-size: 14px;
+}
+
+#logout {
+    color: var(--primary-red);
+    font-weight: 600;
+    text-decoration: none;
+}
+
 @media only screen and (min-width: 1000px) {
     #container-nav { 
         border-bottom-left-radius: 20vmin;

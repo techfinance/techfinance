@@ -32,7 +32,7 @@
 
         public function logar($email, $senha){
 
-            $sql = $this->pdo->prepare("SELECT id_usuario, nome_user FROM usuario WHERE email = :e AND senha = :s");
+            $sql = $this->pdo->prepare("SELECT id_usuario, nome_user, email FROM usuario WHERE email = :e AND senha = :s");
             $sql->bindValue(":e", $email);
             $sql->bindValue(":s", md5($senha));
             $sql->execute();
@@ -42,6 +42,7 @@
                 session_start();
                 $_SESSION["id_usuario"] = $dados["id_usuario"];
                 $_SESSION["nome"] = $dados["nome_user"];
+                $_SESSION["email"] = $dados["email"];
                 return true;
             } else {
                 return false;

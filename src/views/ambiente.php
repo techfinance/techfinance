@@ -2,14 +2,23 @@
     if(!isset($_SESSION['id_usuario'])){
         session_destroy();
         header("Location: ../../public/index.php");
-    }?>
+    }
+    ?>
 
 <head>
     <div class="container-fluid top-nav">
         <div class="navbar-brand"><img src="images/logo.png" alt="logo do site" id="logo"></div>
         <div class="nav-config">
             <i class="bi bi-gear nav-config-items" id="config"></i>
-            <a href="../src/controllers/session_out.php"><i class="bi bi-person-circle nav-config-items" id="user"></i></a>
+            <div class="dropdown">
+                <i class="bi bi-person-circle nav-config-items" id="user" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu p-3">
+                    <li><p class="mb-0"><?= $_SESSION["email"]; ?></p></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="d-flex align-items-center"><a href="../src/controllers/session_out.php" id="logout" >Sair</a></li>
+                </ul>
+            </div>
+            
         </div>
     </div>
     <nav class="navbar navbar-expand-lg" id="nav-bar">
