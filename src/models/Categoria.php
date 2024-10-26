@@ -57,13 +57,31 @@
 
                 return $dado;
             }
+        }
 
-            
-
-
+        public function getSomaSaidasPorCategoria($categoria_id, $id_usuario) {
+            $sql = $this->pdo->prepare("
+                SELECT saida.valor 
+                FROM saida 
+                LEFT JOIN categoria cp ON saida.categoria_id_categoria = cp.id_categoria
+                LEFT JOIN categoriau cu ON saida.categoriau_id_categoriau = cu.id_categoriau
+                WHERE (cp.id_categoria = :ic OR cu.id_categoriau = :ic)
+                AND saida.Usuario_ID_USUARIO = :iu;
+            ");
+            $sql->bindValue(":ic", $categoria_id);
+            $sql->bindValue(":iu", $id_usuario);
+            $sql->execute();
+        
+            $dados = $sql->fetchAll(PDO::FETCH_ASSOC);
+        
+            $soma = 0;
+            foreach ($dados as $linha) {
+                $soma += (float) $linha["valor"];
+            }
+        
+            return $soma;
         }
 
     }
-
 
 ?>

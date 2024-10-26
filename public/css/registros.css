@@ -4,7 +4,7 @@
 
 .text-registros {
     text-align: center;
-    width: 425px;
+    width: 450px;
 }
 
 #modal-registrar {
@@ -57,6 +57,11 @@ select option {
     font-weight: 600;
 }
 
+.sucesso-meta {
+    color: var(--primary-green);
+    font-weight: 600;
+}
+
 .sucesso-entrada {
     color: var(--primary-green);
     font-weight: 600;
@@ -87,12 +92,6 @@ table {
     border: 1px solid;
 }
 
-#dt-length-0, #dt-search-0 {
-    background-color: var(--primary-green);
-    color: white;
-    border: none;
-}
-
 .table-responsive label, #main-table_info {
     font-size: 14px;
 }
@@ -108,3 +107,22 @@ table {
     --bs-pagination-active-border-color: var(--primary-blue);
     --bs-pagination-focus-color: var(--primary-blue);
 }
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th, 
+.table-responsive input, 
+.table-responsive select {
+   background-color: var(--primary-green); /*#29c2926f*/
+   color: white;
+   border: none;
+ }
+
+ .table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+}
+
+
+ 

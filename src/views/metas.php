@@ -71,19 +71,19 @@ if(!isset($_SESSION["id_usuario"])){
                                 <div class="progress-stacked">
 
                                     <div class="progress" role="progressbar" aria-label="Segment one" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percentDiff; ?>%">
-                                        <div class="progress-bar <?php echo $classPercent ?> fw-bold" style="font-size: 10px;">R$<?php echo number_format($somaSaidas,2,",",".") ?></div>
+                                        <div class="progress-bar <?= $classPercent ?> fw-bold" style="font-size: 10px;">R$<?php echo number_format($somaSaidas,2,",",".") ?></div>
                                     </div>
-                                    <div class="progress" role="progressbar" aria-label="Segment two" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percentRest; ?>%">
+                                    <div class="progress" role="progressbar" aria-label="Segment two" aria-valuemin="0" aria-valuemax="100" style="width: <?= $percentRest; ?>%">
                                         <div class="progress-bar bg-dark fw-bold" style="font-size: 10px;">R$<?php echo number_format($valorDiff,2,",",".") ?></div>
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                <span class="badge <?php echo $classPercent ?> rounded-pill"><?php echo round($percentRest); ?>% para o limite</span>
+                                <span class="badge <?= $classPercent ?> rounded-pill"><?= round($percentRest); ?>% para o limite</span>
                                     <!-- trigger modal -->
-                                <i class="bi bi-three-dots" data-bs-toggle="modal" data-bs-target="#detalhesModal<?php echo $i?>" style="cursor: pointer;"></i>
+                                <i class="bi bi-three-dots" data-bs-toggle="modal" data-bs-target="#detalhesModal<?= $i?>" style="cursor: pointer;"></i>
                                     <!-- Modal status meta-->
-                                <div class="modal fade" id="detalhesModal<?php echo $i?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="detalhesModal<?= $i?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content modal-metas">
                                     <div class="modal-header" style="border: none;">
@@ -92,8 +92,8 @@ if(!isset($_SESSION["id_usuario"])){
                                     </div>
                                     <div class="modal-body">
                                         <ul class="list-group">
-                                            <li class="list-group-item"><?php echo $descricaoMeta; ?></li>
-                                            <li class="list-group-item">Você usou <strong><?php echo round($percentDiff) ?>%</strong> do seu limite.</li>
+                                            <li class="list-group-item"><?= $descricaoMeta; ?></li>
+                                            <li class="list-group-item">Você usou <strong><?= round($percentDiff) ?>%</strong> do seu limite.</li>
                                             <li class="list-group-item">Data limite: <?php 
                                             $data_edit = DateTime::createFromFormat('Y-m-d', $dados[$i]["META_DATA"]);
                                             echo $data_edit->format('d/m/Y');
@@ -149,7 +149,12 @@ if(!isset($_SESSION["id_usuario"])){
                                                             echo "R$ ".number_format($valorMeta,2,",",".")." com ". $data["nome_categoria"] ."<br><strong>Descrição: </strong>".$descricaoMeta;
                                                             echo "<br> <strong>Data de criação: </strong>".$dados[$i]["data_criacao"];
                                                             echo "<br> <strong>Data de conclusão: </strong>".$dados[$i]["META_DATA"];
-                                                            echo "<br> <strong>Status da meta: </strong>".$dados[$i]["META_STATUS"]
+                                                            if($dados[$i]["META_STATUS"] == "concluido"){
+                                                                echo "<br> <strong>Status da meta: </strong>"."<span style='font-weight: 600; color: #29C292;'>Concluída</span>";
+                                                            } else if($dados[$i]["META_STATUS"] == "nao concluido"){
+                                                                echo "<br> <strong>Status da meta: </strong>"."<span class='text-danger' style='font-weight: 600'>Não Concluída</span>";
+                                                            }
+                                                            
                                                             ?>
                                                         </li>
 
