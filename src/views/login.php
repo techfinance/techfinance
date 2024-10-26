@@ -1,3 +1,6 @@
+<?php 
+    session_destroy();
+?>
 <div class="container-fluid d-flex align-items-center justify-content-center flex-wrap p-2 login-cadastro-view">
     <div class="p-2 banner">
         <p class="fs-2" id="brand"><img src="./images/logo.png" alt="logo do site" id="logo-grande"> TECH FINANCE</p>

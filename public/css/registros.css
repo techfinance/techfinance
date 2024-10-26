@@ -109,17 +109,16 @@ table {
 }
 
 .table-striped>tbody>tr:nth-child(odd)>td, 
-.table-striped>tbody>tr:nth-child(odd)>th, 
-.table-responsive input, 
-.table-responsive select {
+.table-striped>tbody>tr:nth-child(odd)>th
+{
    background-color: var(--primary-green); /*#29c2926f*/
    color: white;
    border: none;
- }
+}
 
  .table-striped>tbody>tr:nth-child(even)>td,
 .table-striped>tbody>tr:nth-child(even)>th {
-    background-color: var(--primary-blue);
+    background-color: #102636de;
     color: white;
     border: none;
 }

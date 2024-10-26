@@ -45,12 +45,61 @@
             return $dados;
         }
 
+        //retorna as saídas por mês
+        public function getDespesaPorMes($id_usuario) {
+            $this->pdo->query("SET lc_time_names = 'pt_BR';");
+
+            $sql = $this->pdo->prepare("
+                SELECT 
+                    MONTHNAME(saida_data) AS mes_nome, 
+                    SUM(valor) AS total 
+                FROM 
+                    saida 
+                WHERE 
+                    usuario_id_usuario = :id 
+                    AND saida_data >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
+                GROUP BY 
+                    mes_nome 
+                ORDER BY 
+                    MONTH(saida_data) ASC;  -- Para garantir a ordem correta
+            ");
+            
+            $sql->bindValue(":id", $id_usuario);
+            $sql->execute();
+        
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         //retorna todas as entradas registradas
         public function getEntrada($id) {
             $dados = array();
             $sql = $this->pdo->query("SELECT nome_entr, valor_entr, entr_data FROM entrada WHERE usuario_id_usuario = $id");
             $dados = $sql->fetchAll(PDO::FETCH_ASSOC);
             return $dados;
+        }
+
+        public function getEntradaPorMes($id_usuario) {
+            $this->pdo->query("SET lc_time_names = 'pt_BR';");
+
+            $sql = $this->pdo->prepare("
+                SELECT 
+                    MONTHNAME(entr_data) AS mes_nome, 
+                    SUM(valor_entr) AS total 
+                FROM 
+                    entrada 
+                WHERE 
+                    usuario_id_usuario = :id 
+                    AND entr_data >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
+                GROUP BY 
+                    mes_nome 
+                ORDER BY 
+                    MONTH(entr_data) ASC;  -- Para garantir a ordem correta
+            ");
+            
+            $sql->bindValue(":id", $id_usuario);
+            $sql->execute();
+        
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
         }
 
         //retorna todos os registros de entrada e saida ordenados por data

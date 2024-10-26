@@ -4,11 +4,11 @@
     <div class="row p-2 justify-content-around">
         <div class="col-sm-auto">
             <canvas id="myLineChart" width="600" height="300"></canvas>
-            <button class ="btn" id="download-pdf-line">Exportar PDF</button>
+            <button class ="btn" id="download-pdf-line" style="font-size: 14px;">Exportar PDF</button>
         </div>
         <div class="col-sm-auto">
             <canvas id="myBarChart" width="600" height="300"></canvas>
-            <button class ="btn" id="download-pdf-bar">Exportar PDF</button>
+            <button class ="btn" id="download-pdf-bar" style="font-size: 14px;">Exportar PDF</button>
         </div>
     </div>
 </div>

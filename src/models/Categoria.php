@@ -66,7 +66,8 @@
                 LEFT JOIN categoria cp ON saida.categoria_id_categoria = cp.id_categoria
                 LEFT JOIN categoriau cu ON saida.categoriau_id_categoriau = cu.id_categoriau
                 WHERE (cp.id_categoria = :ic OR cu.id_categoriau = :ic)
-                AND saida.Usuario_ID_USUARIO = :iu;
+                AND saida.Usuario_ID_USUARIO = :iu
+                AND saida.SAIDA_DATA >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH);
             ");
             $sql->bindValue(":ic", $categoria_id);
             $sql->bindValue(":iu", $id_usuario);

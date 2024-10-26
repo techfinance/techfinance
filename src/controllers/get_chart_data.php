@@ -4,13 +4,23 @@
     });
 
     header('Content-Type: application/json');
+    session_start();
 
+    $id = $_SESSION["id_usuario"];
+    $categoria = new Categoria("tech_finance1", "localhost", "root", "");
+
+    $categorias = $categoria->getAllCategoria($id);
     $data = [
-        "labels" => ['Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro'],
-        "entrada" => [1500, 2500, 3500, 3000, 2500, 2500],
-        "saida" => [2000, 1800, 2500, 1450, 2000, 1500]
+        "labels" => [],
+        "values" => []
     ];
 
-    echo json_encode($data);
+    for($i = 0; $i < count($categorias); $i++){
+        $somaSaida = $categoria->getSomaSaidasPorCategoria($categorias[$i]["id"], $id);
+        array_push($data["labels"], $categorias[$i]["nome"]);
+        array_push($data["values"], $somaSaida);
+    }
+
+    echo json_encode($data, JSON_UNESCAPED_UNICODE);
 
 ?>

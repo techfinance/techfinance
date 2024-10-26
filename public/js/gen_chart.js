@@ -1,24 +1,26 @@
+
 waitForElement(".dashboard", async () => {
 
     const ctx = document.getElementById('myLineChart').getContext('2d');
-    const data = await getChartData();
+    const dataBar = await getChartData('/../src/controllers/get_chart_data.php');
+    const dataLine = await getChartData('/../src/controllers/get_chart_dataline.php');
 
 
         const myLineChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: data.labels, // rótulos do eixo X
+                labels: dataLine.labels, // rótulos do eixo X
                 datasets: [
                     {
                         label: 'Entrada',
-                        data: data.entrada, // dados para entrada
+                        data: dataLine.entradas, // dados para entrada
                         fill: false,
                         borderColor: 'rgba(75, 192, 192, 1)',
                         tension: 0.1
                     },
                     {
                         label: 'Saída',
-                        data: data.saida, // dados para saída
+                        data: dataLine.saidas, // dados para saída
                         fill: false,
                         borderColor: 'rgba(255, 99, 132, 1)',
                         tension: 0.1
@@ -31,6 +33,12 @@ waitForElement(".dashboard", async () => {
                     y: {
                         beginAtZero: true
                     }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Entradas e despesas nos últimos 6 meses (em R$)'
+                    }
                 }
             }
         });
@@ -39,22 +47,18 @@ waitForElement(".dashboard", async () => {
         const myBarChart = new Chart(ctx2, {
             type: 'bar',
             data: {
-                labels: ['Alimentação', 'Lazer', 'Transporte', 'Saúde', 'Academia', 'Carro'],
+                labels: dataBar.labels,
                 datasets: [{
                     label: 'Despesas',
-                    data: [1300.00, 800.00, 500.00, 320.25, 1150.32, 625],
+                    data: dataBar.values,
                     backgroundColor: [
                         'rgba(75, 192, 192, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',   
                         'rgba(255, 99, 132, 0.2)'
                     ],
                     borderColor: [
                         'rgba(75, 192, 192, 1)',
                         'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(153, 102, 255, 1)',
                         'rgba(255, 99, 132, 1)'
                     ],
                     borderWidth: 1
@@ -65,6 +69,15 @@ waitForElement(".dashboard", async () => {
                     y: {
                         beginAtZero: true
                     }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Saídas por categoria nos últimos 30 dias (em R$)'
+                    },
+                    legend: {
+                        display: false
+                      }
                 }
             }
         });
@@ -93,8 +106,8 @@ waitForElement(".dashboard", async () => {
 });
 
 
-async function getChartData() {
-    const response = await fetch('/../src/controllers/get_chart_data.php');
+async function getChartData(url) {
+    const response = await fetch(url);
     const data = await response.json();
     return data;
 }
