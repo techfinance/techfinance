@@ -4,6 +4,7 @@
 
 .text-registros {
     text-align: center;
+    width: 425px;
 }
 
 #modal-registrar {
@@ -84,4 +85,26 @@ th {
 
 table {
     border: 1px solid;
+}
+
+#dt-length-0, #dt-search-0 {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+}
+
+.table-responsive label, #main-table_info {
+    font-size: 14px;
+}
+
+.page-link {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+}
+
+.pagination {
+    --bs-pagination-active-bg: var(--primary-blue);
+    --bs-pagination-active-border-color: var(--primary-blue);
+    --bs-pagination-focus-color: var(--primary-blue);
 }

@@ -126,7 +126,7 @@ if(!isset($_SESSION["id_usuario"])){
     </div>
 
     <div class="table-responsive">
-    <table class="table table-striped table-hover flex-grow-1 flex-shrink-1">
+    <table class="table table-striped table-hover flex-grow-1 flex-shrink-1" id="main-table">
       
   <thead>
   <div class="text-center" style="font-weight: 600; font-size: 14px;">Últimos Registros</div>
@@ -140,7 +140,7 @@ if(!isset($_SESSION["id_usuario"])){
       <th scope="col"></th>
     </tr>
   </thead>
-  <tbody class="table-registros ">
+  <tbody class="table-registros">
     <?php
       include "../../src/controllers/controle_tabela.php";
 

@@ -12,9 +12,6 @@
 
       if(count($dados) > 0){
         for($i = 0; $i < count($dados); $i++){
-          if($i == 10){
-            break;
-          }
           echo "<tr>";
           echo "<td>". $i+1 ."</td>";
           foreach($dados[$i] as $key => $value){
