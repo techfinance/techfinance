@@ -28,7 +28,7 @@ if(!isset($_SESSION["id_usuario"])){
                             if($dados[$i]["META_STATUS"] == "progresso"){
 
                             $valorMeta = $dados[$i]["VALOR"];
-                            $descricaoMeta = $dados[$i]["DESCRICAO"];
+                            $descricaoMeta = $dados[$i]["META_DESCRICAO"];
                             $somaSaidas = $metas->getSomaSaidas($dados[$i]["ID_META"], $id_usuario);
                             $valorDiff = $valorMeta - $somaSaidas;
                             $percentDiff = $somaSaidas / $valorMeta * 100;
@@ -147,7 +147,7 @@ if(!isset($_SESSION["id_usuario"])){
                                                             $data = $categoria->getCategoriaName($dados[$i]["Categoria_ID_CATEGORIA"], $dados[$i]["CategoriaU_ID_CATEGORIAU"], $id_usuario);
                                                             
                                                             echo "R$ ".number_format($valorMeta,2,",",".")." com ". $data["nome_categoria"] ."<br><strong>Descrição: </strong>".$descricaoMeta;
-                                                            echo "<br> <strong>Data de criação: </strong>".$dados[$i]["data_criacao"];
+                                                            echo "<br> <strong>Data de criação: </strong>".$dados[$i]["META_DATACRIACAO"];
                                                             echo "<br> <strong>Data de conclusão: </strong>".$dados[$i]["META_DATA"];
                                                             if($dados[$i]["META_STATUS"] == "concluido"){
                                                                 echo "<br> <strong>Status da meta: </strong>"."<span style='font-weight: 600; color: #29C292;'>Concluída</span>";

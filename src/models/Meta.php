@@ -4,9 +4,9 @@
         public function criarMeta($valor_meta, $data_meta, $id_usuario, $descricao, $tipo, $id_categoria){
             
             if($tipo == "padrao"){
-                $sql = $this->pdo->prepare("INSERT INTO metas (valor, meta_status, meta_data, usuario_id_usuario, categoria_id_categoria, descricao) VALUES (:v, :s, :d, :i, :ic, :de)");
+                $sql = $this->pdo->prepare("INSERT INTO metas (valor, meta_status, meta_data, usuario_id_usuario, categoria_id_categoria, meta-descricao) VALUES (:v, :s, :d, :i, :ic, :de)");
             } else {
-                $sql = $this->pdo->prepare("INSERT INTO metas (valor, meta_status, meta_data, usuario_id_usuario, categoriau_id_categoriau, descricao) VALUES (:v, :s, :d, :i, :ic, :de)");
+                $sql = $this->pdo->prepare("INSERT INTO metas (valor, meta_status, meta_data, usuario_id_usuario, categoriau_id_categoriau, meta_descricao) VALUES (:v, :s, :d, :i, :ic, :de)");
             }     
 
             $sql->bindValue("v", $valor_meta);
@@ -37,7 +37,7 @@
                                         WHERE m.id_meta = :im 
                                         AND m.Usuario_ID_USUARIO = :iu
                                         AND saida.Usuario_ID_USUARIO = :iu
-                                        AND saida.SAIDA_DATA >= m.data_criacao;");
+                                        AND saida.SAIDA_DATA >= m.meta_datacriacao;");
             $sql->bindValue(":im", $meta_id);
             $sql->bindValue(":iu", $id_usuario);
             $sql->execute();

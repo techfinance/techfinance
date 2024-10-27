@@ -23,12 +23,17 @@ function getMessage(element){
 }
 
 // ajax view pages
-async function getPage(page) {
+async function getPage(page, callbacks = []) {
     const response = await fetch(`../src/views/${page}.php`);
-    if(!response.ok)
+    if(!response.ok){
         console.log(response.status);
+        return;
+    }
+        
     const text = await response.text();
     main ? main.innerHTML = text : document.body.innerHTML = text;
+
+    callbacks.forEach(callback => callback());
 }
 
 

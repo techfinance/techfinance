@@ -4,7 +4,8 @@ async function getChartData(url) {
     return data;
 }
 
-waitForElement(".dashboard", async () => {
+
+async function createCharts() {
 
     const ctx = document.getElementById('myLineChart').getContext('2d');
     const dataBar = await getChartData('/../src/controllers/get_chart_data.php');
@@ -106,7 +107,6 @@ waitForElement(".dashboard", async () => {
                 doc.save('grafico-categorias.pdf');
             });
         });
-
-});
+}
 
 

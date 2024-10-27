@@ -14,7 +14,7 @@
                 <i class="bi bi-person-circle nav-config-items" id="user" data-bs-toggle="dropdown" aria-expanded="false"></i>
                 <ul class="dropdown-menu p-3">
                     <li><p class="mb-0"><?= $_SESSION["email"]; ?></p></li>
-                    <li><hr class="dropdown-divider"></li>
+                    <li><hr class="dropdown-divider" style="background-color: white;"></li>
                     <li class="d-flex align-items-center"><a href="../src/controllers/session_out.php" id="logout" >Sair</a></li>
                 </ul>
             </div>
@@ -32,16 +32,16 @@
                         <a class="nav-link" aria-current="page" href="#" onclick="getPage('home')">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="getPage('registros')">Registros</a>
+                        <a class="nav-link" href="#" onclick="getPage('registros', [createTable, formEntrada, formSaida])">Registros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="getPage('metas')">Metas Financeiras</a>
+                        <a class="nav-link" href="#" onclick="getPage('metas', [formMeta])">Metas Financeiras</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="getPage('sonhos')">Sonhos de Consumo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="getPage('dashboards')">Meus Gastos</a>
+                        <a class="nav-link" href="#" onclick="getPage('dashboards', [createCharts])">Meus Gastos</a>
                     </li>
                 </ul>
             </div>

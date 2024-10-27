@@ -1,6 +1,4 @@
-
-
-waitForElement(".registro-metas", () => {
+function formMeta() {
     const formMetas = document.querySelector("#form-metas");
 
     formMetas.addEventListener("submit", (event) => {
@@ -20,7 +18,7 @@ waitForElement(".registro-metas", () => {
 
     });
 
-});
+}
 
 async function ajaxSetMeta(categoria, valor, data, descricao, tipo) {
     let response = await fetch("/../src/controllers/controle_meta.php?" + new URLSearchParams({

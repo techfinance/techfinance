@@ -48,8 +48,5 @@
           
           echo "</tr>";
         } 
-      } else {
-        echo "<tr><td colspan='7' class='text-center'>Você ainda não tem registros</td></tr>";
-      }
-
+      } 
 ?>

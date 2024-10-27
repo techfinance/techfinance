@@ -1,12 +1,4 @@
-function waitForElement(querySelector, callback){
-    let poops = setInterval(() => {
-        if(document.querySelector(querySelector)){
-            callback();
-        }
-    }, 100);
-}
-
-waitForElement("#main-table", () => {
+function createTable() {
         if($.fn.dataTable.isDataTable('#main-table')){
             $('#main-table').dataTable();
         } else {
@@ -37,11 +29,15 @@ waitForElement("#main-table", () => {
                 "pagingType": "simple_numbers",
                 lengthMenu: [ 10, 15, 25, 50 ],
                 ordering: false,
+                columnDefs: [{
+                    "defaultContent": "-",
+                    "targets": "_all"
+                  }]
             });
         }
-});
+}
 
-waitForElement("#form-saida", () => {
+function formSaida() {
     const formGasto = document.querySelector("#form-saida");
     const categoriaNome = document.querySelector("#categoriaNome");
     const categoria = document.querySelector("#categoriaDespesa");
@@ -90,11 +86,10 @@ waitForElement("#form-saida", () => {
             document.querySelector(".table-registros").innerHTML = data;
         })
 
-        });
+    });
+}
 
-});
-
-waitForElement("#form-entrada", () => {
+function formEntrada() {
 
     const formEntrada = document.querySelector("#form-entrada");
 
@@ -114,8 +109,7 @@ waitForElement("#form-entrada", () => {
         })
     });
 
-    clearInterval();
-})
+}
 
 //criar categoria ao escolher outros em categoria e retorna o id da categoria criada
 async function ajaxCreateCategoria(categoriaNome){
@@ -140,9 +134,8 @@ async function ajaxGastos(nomeDespesa, categoriaDespesa, valor, tipo, id) {
         id: id,
     }).toString());
 
-    if(!response.ok){
+    if(!response.ok)
         console.log(response.status);
-    }
     
     document.querySelector(".sucesso-registro").hidden = false;
     setTimeout(() => {
@@ -157,9 +150,8 @@ async function ajaxEntrada(nomeEntrada, valor) {
         valor: valor
     }).toString());
 
-    if(!response.ok){
+    if(!response.ok)
         console.log(response.status);
-    }
     
     document.querySelector(".sucesso-entrada").hidden = false;  
     setTimeout(() => {

@@ -1,5 +1,7 @@
 <?php 
-    session_destroy();
+    if(isset($_SESSION)){
+        session_destroy();
+    }
 ?>
 <div class="container-fluid d-flex align-items-center justify-content-center flex-wrap p-2 login-cadastro-view">
     <div class="p-2 banner">
