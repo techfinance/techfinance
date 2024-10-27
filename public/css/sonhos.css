@@ -1,0 +1,15 @@
+.sonhos-registro {
+    text-align: center;
+}
+
+
+@media only screen and (min-width: 1000px) {
+    .sonhos {
+        flex: 1;
+    }
+    
+    .sonhos-registro {
+        flex: 1;
+        margin-top: 5px;
+    }    
+}

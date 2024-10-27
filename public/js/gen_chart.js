@@ -78,7 +78,7 @@ async function createCharts() {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Saídas por categoria nos últimos 30 dias (em R$)'
+                        text: 'Despesas por categoria nos últimos 30 dias (em R$)'
                     },
                     legend: {
                         display: false

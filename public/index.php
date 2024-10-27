@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/registros.css">
     <link rel="stylesheet" href="css/metas.css">
+    <link rel="stylesheet" href="css/sonhos.css">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link href="https://cdn.datatables.net/v/bs5/jqc-1.12.4/dt-2.1.8/datatables.min.css" rel="stylesheet">
