@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.sucesso-sonho {
+    color: var(--primary-green);
+    font-weight: 600;
+}
 
 @media only screen and (min-width: 1000px) {
     .sonhos {

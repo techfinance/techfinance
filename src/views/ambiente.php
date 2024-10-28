@@ -38,7 +38,7 @@
                         <a class="nav-link" href="#" onclick="getPage('metas', [formMeta])">Metas Financeiras</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="getPage('sonhos')">Sonhos de Consumo</a>
+                        <a class="nav-link" href="#" onclick="getPage('sonhos', [formSonho])">Sonhos de Consumo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="getPage('dashboards', [createCharts])">Meus Gastos</a>

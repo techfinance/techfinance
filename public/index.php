@@ -46,6 +46,7 @@
     <script src="js/main.js"></script>
     <script src="js/registros.js"></script>
     <script src="js/metas.js"></script>
+    <script src="js/sonhos.js"></script>
     <script src="js/gen_chart.js"></script>
 </body>
 </html>
