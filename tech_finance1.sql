@@ -126,6 +126,7 @@ CREATE TABLE `saida` (
 
 CREATE TABLE `sonhos` (
   `ID_SONHO` int(11) NOT NULL,
+  `SONHO_NOME` varchar(100) NOT NULL,
   `VALOR` decimal(10,2) NOT NULL,
   `SONHO_STATUS` varchar(30) NOT NULL,
   `SONHO_DATA` date NOT NULL,

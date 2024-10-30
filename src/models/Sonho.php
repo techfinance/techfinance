@@ -14,6 +14,7 @@
         }
 
         public function buscarSonho($id_usuario) {
+            $dados = array();
             $sql = $this->pdo->query("SELECT * FROM sonhos WHERE usuario_id_usuario = $id_usuario");
             $dados = $sql->fetchAll(PDO::FETCH_ASSOC);
 

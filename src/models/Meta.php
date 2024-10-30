@@ -72,6 +72,14 @@
 
         }
 
+        public function getMetasEmProgresso($id_usuario){
+            $dados = array();
+            $sql = $this->pdo->query("SELECT id_meta from metas WHERE usuario_id_usuario = $id_usuario AND meta_status = 'progresso'");
+            $dados = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+            return $dados;
+        }
+
     }
 
 ?>
