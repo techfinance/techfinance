@@ -8,7 +8,7 @@ if(!isset($_SESSION["id_usuario"])){
         <h1>Sonhos de Consumo</h1>
         <p>Acompanhe o progresso dos seus sonhos. Pequenas mudanças hoje podem fazer uma grande diferença amanhã!</p>
 
-        <ol class="list-group">
+        <ol class="list-group" id="list-sonhos">
             <?php include "lista_sonhos.php" ?>
         </ol>
 
@@ -29,7 +29,7 @@ if(!isset($_SESSION["id_usuario"])){
                         <form class="form-sonho text-start" id="form-sonho">
                             <div class="mb-3">
                                 <label for="descricao-sonho" class="form-label">Título do sonho</label>
-                                <textarea class="form-control form-despesa-input" id="descricao-sonho" rows="2"></textarea>
+                                <input class="form-control form-despesa-input" id="descricao-sonho" required>
                             </div>
                             <div class="mb-3">
                                 <label for="valor-sonho" class="form-label">Valor a atingir</label>
@@ -58,4 +58,3 @@ if(!isset($_SESSION["id_usuario"])){
     </div>
 
 </div>
-

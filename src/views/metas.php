@@ -11,7 +11,7 @@ if(!isset($_SESSION["id_usuario"])){
         <p>Acompanhe seu progresso e mantenha-se motivado, pois cada passo é importante na sua
         jornada rumo a uma vida financeira saudável!</p>
 
-        <ol class="list-group">
+        <ol class="list-group" id="list-metas">
             <?php include "lista_metas.php" ?>
         </ol>
     </div>
@@ -74,16 +74,21 @@ if(!isset($_SESSION["id_usuario"])){
                                     <input type="number" step="0.01" min="0" class="form-control form-despesa-input" aria-label="Value" aria-describedby="addon-wrapping" id="valor-meta" required>
                                 </div>
                             </div>
+                        <div class="mb-3">
+                            <label for="data-inicio" class="form-label">Data inicial</label>
+                            <input type="date" class="form-control form-despesa-input" id="data-inicio" min="<?= date('Y-m-d'); ?>" value="<?= date('Y-m-d'); ?>" required>
+                          </div>
                           <div class="mb-3">
-                            <label for="nomeDespesa" class="form-label">Data limite</label>
-                            <input type="date" class="form-control form-despesa-input" id="data-meta" min="<?php echo date('Y-m-d');  ?>" required>
+                            <label for="data-meta" class="form-label">Data limite</label>
+                            <input type="date" class="form-control form-despesa-input" id="data-meta" min="<?= date('Y-m-d'); ?>" required>
                           </div>
                           <div class="mb-3">
                                 <label for="descricao-meta" class="form-label">Descrição adicional</label>
-                                <textarea class="form-control form-despesa-input" id="descricao-meta" rows="2"></textarea>
+                                <textarea class="form-control form-despesa-input" id="descricao-meta" rows="2" required></textarea>
                             </div>
                         </form>
                         <div class="sucesso-meta text-center" hidden>Meta registrada!</div>
+                        <div class="dateErro text-center" hidden>A data limite deve ser maior que a data inicial</div>
                     </div>
                     <div class="modal-footer border-0">
                         <input type="submit" class="btn" value="Registrar" form="form-metas"></input>

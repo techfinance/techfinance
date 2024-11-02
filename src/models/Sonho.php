@@ -37,6 +37,15 @@
 
             return $dados;
         }
+
+        public function deleteSonho($id_sonho, $id_usuario){
+            $sql = $this->pdo->prepare("DELETE FROM sonhos WHERE id_sonho = :i AND usuario_id_usuario = :iu");
+            $sql->bindValue(":i", $id_sonho);
+            $sql->bindValue(":iu", $id_usuario);
+            $sql->execute();
+            
+            return true;
+        }
     }
 
 ?>

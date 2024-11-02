@@ -14,8 +14,24 @@ if(!isset($_SESSION["id_usuario"])){
         <h3>Lembrete</h3>
         <p>Antes de comprar, pergunte-se: isso é uma necessidade ou um desejo?</p>
 
-        <!-- Button trigger modal -->
-        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1" data-bs-backdrop="static">
+        
+
+        <div class="modal fade" id="modal-escolha" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-form">
+                    <div class="modal-header border-0">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Selecione o tipo de registro:</h1>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center justify-content-center escolha">
+                      <button class="btn btn-despesa" data-bs-target="#modal-despesa" data-bs-toggle="modal">Despesa</button>
+                      <button class="btn" data-bs-target="#modal-entrada" data-bs-toggle="modal">Entrada</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal despesa -->
+        <div class="modal fade" id="modal-despesa" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1" data-bs-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content modal-form">
                     <div class="modal-header border-0">
@@ -59,7 +75,7 @@ if(!isset($_SESSION["id_usuario"])){
                                       }
                                     }
 
-                                    echo "<option value='$nome' class='categorias' data-tipo='$tipo' data-id='$id'>$nome</option>";
+                                    echo "<option value='$nome' data-tipo='$tipo' data-id='$id'>$nome</option>";
                                   }
                                 }
                               ?>
@@ -74,7 +90,7 @@ if(!isset($_SESSION["id_usuario"])){
                           <div class="mb-3">
                             <label for="valor" class="form-label">Valor</label>
                             <div class="input-group">
-                              <span class="input-group-text form-text-input" id="addon-wrapping">R$</span>
+                              <span class="input-group-text form-text-input-despesa" id="addon-wrapping">R$</span>
                               <input type="number" step="0.01" min="0" class="form-control form-despesa-input" aria-label="Value" aria-describedby="addon-wrapping" id="valor" required>
                             </div>
                           </div>
@@ -82,13 +98,14 @@ if(!isset($_SESSION["id_usuario"])){
                         <div class="sucesso-registro text-center" hidden>Despesa registrada!</div>
                     </div>
                     <div class="modal-footer border-0">
-                        <button class="btn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Entrada</button>
-                        <input type="submit" class="btn" value="Registrar" form="form-saida"></input>
+                        
+                        <input type="submit" class="btn btn-despesa" value="Registrar" form="form-saida"></input>
                     </div>
                 </div>
             </div>
-        </div>                    
-        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" data-bs-backdrop="static">
+        </div> 
+        <!-- modal entrada-->                   
+        <div class="modal fade" id="modal-entrada" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" data-bs-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content modal-form">
                     <div class="modal-header border-0">
@@ -115,14 +132,14 @@ if(!isset($_SESSION["id_usuario"])){
                     <div class="negado-entrada" hidden>Preencha todos os campos!</div>
                     </div>
                     <div class="modal-footer border-0">
-                        <button class="btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Despesa</button>
                         <input type="submit" class="btn" value="Registrar" form="form-entrada"></input>
                         <!--<button type="button" class="btn" form="form-entrada" id="registro-entrada">Registrar</button>-->
                     </div>
                 </div>
             </div>
         </div>
-        <button class="btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" id="modal-registrar">Registrar</button>
+        <!-- Button trigger modal -->
+        <button class="btn" data-bs-target="#modal-escolha" data-bs-toggle="modal" id="modal-registrar">Registrar</button>
     </div>
 
     <div class="table-responsive">

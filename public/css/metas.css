@@ -15,6 +15,11 @@
     box-shadow: none;
 }
 
+.dateErro {
+    color: var(--primary-red);
+    font-weight: 600;
+}
+
 .badge {
     margin: 10px 0 0 10px;
 }
@@ -28,6 +33,23 @@
     color: var(--primary-blue);
     margin-top: 10px;
     margin-left: 5px;
+}
+
+.bg-secondary-red {
+    background-color: #DE6771;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.btn-primary-blue {
+    background-color: var(--primary-blue);
+}
+
+.list-group-item-modal {
+    background-color: #00a87860;
+    color: white;
+    font-weight: 500;
+    border: none;
 }
 
 @media only screen and (min-width: 1000px) {

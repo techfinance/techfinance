@@ -3,6 +3,8 @@
         include "$_SERVER[DOCUMENT_ROOT]/src/models/" . $class_name . '.php';
         });
 
+    if(!isset($_SESSION["id_usuario"])) session_start();
+
     $id_usuario = $_SESSION["id_usuario"];
     $sonhos = new Sonho("tech_finance1", "localhost", "root", "");
 
@@ -38,7 +40,6 @@
 
         $parcelas = $valorDiff / $monthsDiff;
 
-        
         ?>
 
     <li class="list-group-item d-flex flex-wrap justify-content-between align-items-start">
@@ -54,7 +55,6 @@
         </div>
         <p style="font-size: 14px; margin-top: 5px;">Você deve poupar <strong>R$<?= number_format($parcelas,2,",",".") ?></strong> por mês para alcançar esse objetivo
         </p>
-        
     </div>
     <div>
             
@@ -62,16 +62,16 @@
             
         <div class="modal fade" id="detalhesModal<?= $i?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-metas">
+            <div class="modal-content modal-metas modal-form">
             <div class="modal-header" style="border: none;">
-                <h1 class="modal-title fs-5" id="exampleModalLabel" >Detalhes</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h1 class="modal-title fs-5" id="exampleModalLabel" ><?= $nome_sonho ?></h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <ul class="list-group">
-                    <li class="list-group-item">Valor a atingir: R$<?= number_format($valor,2,",",".") ?> <br>
+                    <li class="list-group-item list-group-item-modal">Valor a atingir: R$<?= number_format($valor,2,",",".") ?> <br>
                     </li>
-                    <li class="list-group-item">Data limite: <?php
+                    <li class="list-group-item list-group-item-modal">Data limite: <?php
                         $data_edit = DateTime::createFromFormat('Y-m-d', $data_fim);
                         echo $data_edit->format('d/m/Y');
                     ?><br>
@@ -80,10 +80,27 @@
                 </ul>
             </div>
             <div class="modal-footer" style="border: none;">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border: none;">Fechar</button>
+                <i class='bi bi-trash-fill' style='cursor: pointer; color:var(--secondary-red); font-size: 24px;' data-bs-target="#excluir<?= $i?>" data-bs-toggle="modal"></i>
             </div>
             </div>
         </div>
+        </div>
+
+        <div class="modal fade" id="excluir<?= $i?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-metas modal-form">
+                    <div class="modal-header" style="border: none;">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel" >Tem certeza que deseja excluir o sonho?</h1>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <div class="modal-footer" style="border: none;">
+                        <button class="btn btn-primary-blue" data-bs-target="#detalhesModal<?= $i?>" data-bs-toggle="modal" style='cursor: pointer;'>Voltar</button>
+                        <!-- Excluir sonho -->
+                        <button class="btn btn-despesa" data-bs-dismiss="modal" onclick="excluirSonho(<?= $id_sonho ?>, <?= $id_usuario ?>)">Excluir</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div> 
 </li>
@@ -95,11 +112,11 @@
 </a>
 <!-- Modal concluidas -->
 <div class="modal fade" id="metas-concluidas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog scrollable">
-        <div class="modal-content modal-metas">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content modal-metas modal-form">
             <div class="modal-header" style="border: none;">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Sonhos Concluídos</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <ul class="list-group">
@@ -112,7 +129,7 @@
                         $status = $dados[$i]["SONHO_STATUS"];
                         if($status == "concluido"){?>
 
-                            <li class="list-group-item">
+                            <li class="list-group-item list-group-item-modal">
                                 Sonho: <?= $nome_sonho ?><br>
                                 Valor atingido: R$<?= number_format($valor,2,",",".") ?><br>
                                 Data: <?= $data_fim ?>

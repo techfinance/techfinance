@@ -4,12 +4,16 @@
 
 .text-registros {
     text-align: center;
-    width: 450px;
+    width: 400px;
 }
 
 #modal-registrar {
     display: block;
     margin: 20px auto;
+}
+
+.escolha {
+    gap: 10px;
 }
 
 .modal-form {
@@ -26,6 +30,20 @@
     font-size: 1.1em;
 }
 
+.form-despesa-input-desp {
+    background-color: #de67715d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding-block: 10px;
+    font-size: 1.1em;
+}
+
+.form-despesa-input-desp:focus {
+    background-color: #de67715d;
+    color: white;
+}
+
 .form-despesa-input:focus {
     background-color: #00a87860;
     color: white;
@@ -33,6 +51,13 @@
 
 .form-text-input {
     background-color: var(--primary-green);
+    color: white;
+    font-weight: 500;
+    border: none;
+}
+
+.form-text-input-despesa {
+    background-color: var(--secondary-red);
     color: white;
     font-weight: 500;
     border: none;
@@ -94,6 +119,10 @@ table {
 
 .table-responsive label, #main-table_info {
     font-size: 14px;
+}
+
+.btn-despesa {
+    background-color: var(--secondary-red);
 }
 
 .page-link {
