@@ -29,6 +29,14 @@
     
             return true;
         }
+
+        public function getSonhosEmProgresso($id_usuario){
+            $dados = array();
+            $sql = $this->pdo->query("SELECT id_sonho from sonhos WHERE usuario_id_usuario = $id_usuario AND sonho_status = 'progresso'");
+            $dados = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+            return $dados;
+        }
     }
 
 ?>

@@ -40,6 +40,10 @@ h3 {
     color: var(--primary-red);
 }
 
+.metas-home {
+    margin-top: 20px;
+}
+
 .lampada {
     display: block;
     margin: 4px auto;

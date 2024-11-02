@@ -25,16 +25,37 @@
     <div class="col-md">
       <h3>Suas Metas</h3>
       <div class="metas-home">
-        
+        <?php
+          $id = $_SESSION["id_usuario"];
+          $metas = new Meta("tech_finance1", "localhost", "root", "");
 
+          $total_metas = $metas->getMetasEmProgresso($id);
+          if(count($total_metas) > 0){
+            echo "<p>Você tem ".count($total_metas)." meta(s) em progresso</p>";
+          } 
+          else echo "Vamos lançar sua primeira meta!";
+        ?>
+        <a href="#" class="homeMetas" onclick="getPage('metas')" style="color: var(--primary-green);font-weight: 600"><i class="bi bi-bullseye"></i> Conferir metas</a>
       </div>
 
     </div>
     <div class="col-md">
       <h3>Seus Sonhos</h3>
+      <div class="metas-home">
+        <?php 
+          $sonho = new Sonho("tech_finance1", "localhost", "root", "");
+
+          $total_sonhos = $sonho->getSonhosEmProgresso($id);
+          if(count($total_sonhos) > 0){
+            echo "<p>Você tem ".count($total_sonhos)." sonho(s) em progresso</p>";
+          } 
+          else echo "Vamos em busca do seu primeiro sonho!";
+
+        ?>
+        <a href="#" class="homeMetas" onclick="getPage('sonhos')" style="color: var(--primary-green);font-weight: 600"><i class="bi bi-cloud-check"></i> Conferir sonhos </a>
+      </div>
     </div>
   </div>
 </div>
-    
 
         
