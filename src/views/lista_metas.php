@@ -214,7 +214,6 @@
                         </ul>
                     </div>
                     <div class="modal-footer" style="border: none;">
-                        <button type="button" class="btn" data-bs-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>

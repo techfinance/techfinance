@@ -5,12 +5,12 @@
 }
 h1 {font-weight: 600;}
 
-.select-config {
-    width: 400px !important;
-}
-
 .info {
     cursor: pointer;
+}
+
+.container-config {
+    max-width: 350px;
 }
 
 .div-info {

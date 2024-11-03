@@ -83,6 +83,15 @@
             return $soma;
         }
 
+        public function excluirCategoriaU($categoria_id, $id_usuario){
+            $sql = $this->pdo->prepare("DELETE FROM categoriau WHERE id_categoriau = :ic AND usuario_id_usuario = :iu");
+            $sql->bindValue(":ic", $categoria_id);
+            $sql->bindValue(":iu", $id_usuario);
+            $sql->execute();
+
+            return true;
+        }
+
     }
 
 ?>

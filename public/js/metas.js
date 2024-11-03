@@ -2,7 +2,6 @@ function formMeta() {
     const formMetas = document.querySelector("#form-metas");
     const formUpdate = document.querySelector("#form-update-metas");
 
-
     formMetas.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -23,9 +22,7 @@ function formMeta() {
         });
 
         formMetas.reset();
-
     });
-
 }
 
 async function excluirMeta(idMeta, idUsuario){
@@ -41,7 +38,6 @@ async function excluirMeta(idMeta, idUsuario){
         let data = await response.text();
 
         document.querySelector("#list-metas").innerHTML = data;
-
     }
 }
 
@@ -87,5 +83,4 @@ async function formUpdateMeta(id, valor){
 
         document.querySelector("#list-metas").innerHTML = data;
     }
-
 }
