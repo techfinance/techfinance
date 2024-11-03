@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="row column-gap-4">
-    <div class="col-md">
+    <div class="col-md home-width">
     <h3>Carteira</h3>
       <div class="carteira">
         <?php 
@@ -39,7 +39,7 @@
         <a href="#" id="homeRegistros" onclick="getPage('registros')">Conferir registros</a>
       </div>
     </div>
-    <div class="col-md">
+    <div class="col-md home-width">
       <h3>Suas Metas</h3>
       <div class="metas-home">
         <?php
@@ -56,7 +56,7 @@
       </div>
 
     </div>
-    <div class="col-md">
+    <div class="col-md home-width">
       <h3>Seus Sonhos</h3>
       <div class="metas-home">
         <?php 

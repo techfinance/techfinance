@@ -1,6 +1,6 @@
 <?php if(!isset($_SESSION["id_usuario"])) session_start(); ?>
 <div class="conainer-fluid p-2 container-config">
-    <h1>Configurações</h1>
+    <h1 style="margin-bottom: 20px;">Configurações</h1>
     <div class="container-fluid">
         <h5>Excluir categoria criada</h5>
         <form id="form-excluir" action="../../src/controllers/excluir_categoria.php" method="GET">
@@ -33,15 +33,13 @@
                         } if($tipo == "usuario"){
                             echo "<option value='$id'>$nome</option>";
                         }
-
                         }
                     }
                 ?>
             </select>
-            
         </form>
         <button class="btn btn-messages" data-bs-target="#excluirCat" data-bs-toggle="modal" style="margin-top: 10px; font-size: 14px;">Excluir</button>
-
+        
         <div class="modal fade" id="excluirCat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content modal-metas modal-form">
@@ -59,7 +57,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-    
 </div>

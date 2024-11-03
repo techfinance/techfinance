@@ -51,6 +51,14 @@ h3 {
     animation: jump-shaking 0.83s infinite;
 }
 
+@media only screen and (max-width: 600px) {
+    .metas-home {
+        margin-top: 10px;
+    }
+    .home-width {
+        margin-bottom: 25px;
+    }
+}
 
 @keyframes jump-shaking {
     0% { transform: translateX(0) }

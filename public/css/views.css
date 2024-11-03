@@ -3,22 +3,20 @@
     flex: 1;
     margin-bottom: 60px; /* para o footer não sobrepor o conteúdo */
 }
-h1 {font-weight: 600;}
-
-.info {
-    cursor: pointer;
-}
-
-.container-config {
-    max-width: 350px;
-}
-
-.div-info {
-    gap: 15px;
-}
 
 .offcanvas {
     background-color: var(--primary-blue);
     color: white;
     text-align: justify;
+}
+
+h1 {font-weight: 600}
+.info {cursor: pointer}
+.container-config {max-width: 350px}
+.div-info {gap: 15px}
+
+@media only screen and (max-width: 600px) {
+    .grafico {
+        margin-bottom: 25px;
+    }
 }
