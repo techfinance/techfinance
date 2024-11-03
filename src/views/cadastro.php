@@ -10,7 +10,7 @@
     </div>
     <div class="form">
         <h1>Cadastro</h1>
-        <form action="../../src/controllers/controle_cadastro.php" method="POST">
+        <form action="../../src/controllers/controle_cadastro.php" id="form-cadastro" method="POST">
             <div class="mb-4">
                 <label for="exampleInputPassword1" class="form-label">Nome</label>
                 <input type="text" class="form-control form-login" maxlength="100" name="nome" required>

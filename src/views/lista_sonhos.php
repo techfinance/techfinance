@@ -107,9 +107,24 @@
 
 <?php  } ?>
 
-<a href="#" data-bs-toggle="modal" data-bs-target="#metas-concluidas" id="botao-metas-concluidas">
-    Sonhos Concluídos
-</a>
+<button type="button" class="btn-messages btn position-relative" data-bs-toggle="modal" data-bs-target="#metas-concluidas">
+        Finalizados
+            <?php 
+                $count = 0;
+                foreach($dados as $key){
+                    if($key["SONHO_STATUS"] !== "progresso") $count++;
+                }
+                if($count > 0) { 
+            ?>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notifications">
+                    <?= $count ?>
+                    <span class="visually-hidden">unread messages</span>
+                </span>
+            <?php
+                }
+            ?>
+            
+        </button>
 <!-- Modal concluidas -->
 <div class="modal fade" id="metas-concluidas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">

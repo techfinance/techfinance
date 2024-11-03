@@ -6,7 +6,10 @@ if(!isset($_SESSION["id_usuario"])){
 <div class="container-fluid d-flex flex-wrap p-2 flex-registros">
     <div class="text-registros">
       <div class="title text-start">
-        <h1>Vamos lá!</h1>
+        <div class="d-flex align-items-center div-info">
+          <h1>Vamos lá!</h1>
+          <i class="bi bi-info-circle info" data-bs-toggle="offcanvas" data-bs-target="#info-container" aria-controls="info-container"></i>
+        </div>
         <p>Registre sua despesa ou entrada e mantenha suas finanças em dia</p>
       </div>
         
@@ -14,7 +17,16 @@ if(!isset($_SESSION["id_usuario"])){
         <h3>Lembrete</h3>
         <p>Antes de comprar, pergunte-se: isso é uma necessidade ou um desejo?</p>
 
-        
+        <!-- Info -->
+      <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="info-container" aria-labelledby="tituloInfo">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="tituloInfo">Registros</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <p>Try scrolling the rest of the page to see this option in action.</p>
+        </div>
+      </div>
 
         <div class="modal fade" id="modal-escolha" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1" data-bs-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
@@ -95,7 +107,7 @@ if(!isset($_SESSION["id_usuario"])){
                             </div>
                           </div>
                         </form>
-                        <div class="sucesso-registro text-center" hidden>Despesa registrada!</div>
+                        <div class="sucesso-registro text-center" style="color: #DE6771" hidden>Despesa registrada!</div>
                     </div>
                     <div class="modal-footer border-0">
                         
@@ -146,7 +158,7 @@ if(!isset($_SESSION["id_usuario"])){
     <table class="table table-striped table-hover flex-grow-1 flex-shrink-1" id="main-table">
       
   <thead>
-  <div class="text-center" style="font-weight: 600; font-size: 14px;">Últimos Registros</div>
+    <div class="text-center" style="font-weight: 600; font-size: 14px;">Últimos Registros</div>
     <tr>
       <th scope="col">N&deg;</th>
       <th scope="col">Tipo</th>
@@ -165,7 +177,6 @@ if(!isset($_SESSION["id_usuario"])){
 
   </tbody>
 </table>
-
 
     </div>
 </div>

@@ -1,3 +1,4 @@
+const loading = document.querySelector(".spinner-border");
 const main = document.querySelector("#main");
 const loginMessage = document.querySelector(".incorreto");
 
@@ -24,6 +25,11 @@ function getMessage(element){
 
 // ajax view pages
 async function getPage(page, callbacks = []) {
+    if(main) {
+        main.innerHTML = "";
+        loading.hidden = false;
+    }
+
     const response = await fetch(`../src/views/${page}.php`);
     if(!response.ok){
         console.log(response.status);
@@ -32,6 +38,7 @@ async function getPage(page, callbacks = []) {
         
     const text = await response.text();
     main ? main.innerHTML = text : document.body.innerHTML = text;
+    if(loading) loading.hidden = true;
 
     callbacks.forEach(callback => callback());
 }

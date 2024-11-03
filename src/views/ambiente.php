@@ -9,7 +9,7 @@
     <div class="container-fluid top-nav">
         <div class="navbar-brand"><img src="images/logo.png" alt="logo do site" id="logo"></div>
         <div class="nav-config">
-            <i class="bi bi-gear nav-config-items" id="config"></i>
+            <i class="bi bi-gear nav-config-items" id="config" onclick="getPage('configuracoes')"></i>
             <div class="dropdown">
                 <i class="bi bi-person-circle nav-config-items" id="user" data-bs-toggle="dropdown" aria-expanded="false"></i>
                 <ul class="dropdown-menu p-3">
@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#" onclick="getPage('home')">Home</a>
+                        <a class="nav-link" aria-current="page" href="#" onclick="getPage('home', [editDica])">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="getPage('registros', [createTable, formEntrada, formSaida])">Registros</a>
@@ -49,6 +49,11 @@
     </nav>
 </head>
 <main>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" hidden>
+            <span class="visually-hidden">Carregando...</span>
+        </div>
+    </div>
     <div class="container" id="main">
         <?php include "../src/views/home.php" ?>
     </div>

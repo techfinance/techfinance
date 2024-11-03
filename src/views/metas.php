@@ -7,14 +7,28 @@ if(!isset($_SESSION["id_usuario"])){
 
     <!-- REGISTRO DAS METAS CRIADAS -->
     <div class="metas">
-        <h1>Suas Metas</h1>
+        <div class="d-flex align-items-center div-info">
+            <h1>Metas Financeiras</h1>
+            <i class="bi bi-info-circle info" data-bs-toggle="offcanvas" data-bs-target="#info-container" aria-controls="info-container"></i>
+        </div>
         <p>Acompanhe seu progresso e mantenha-se motivado, pois cada passo é importante na sua
         jornada rumo a uma vida financeira saudável!</p>
+
+    <!-- Info -->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="info-container" aria-labelledby="tituloInfo">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tituloInfo">Metas Financeiras</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>Try scrolling the rest of the page to see this option in action.</p>
+        </div>
+    </div>
 
         <ol class="list-group" id="list-metas">
             <?php include "lista_metas.php" ?>
         </ol>
-    </div>
+</div>
 
     <!-- registrar metas -->
     <div class="registro-metas">

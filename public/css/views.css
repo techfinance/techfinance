@@ -4,3 +4,21 @@
     margin-bottom: 60px; /* para o footer não sobrepor o conteúdo */
 }
 h1 {font-weight: 600;}
+
+.select-config {
+    width: 400px !important;
+}
+
+.info {
+    cursor: pointer;
+}
+
+.div-info {
+    gap: 15px;
+}
+
+.offcanvas {
+    background-color: var(--primary-blue);
+    color: white;
+    text-align: justify;
+}

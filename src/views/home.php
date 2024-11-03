@@ -3,13 +3,29 @@
 <div class="container-fuid p-2">
   <div class="row top-row ">
     <div class="col-md-8">
-      <h1>Olá, <?php echo $_SESSION["nome"]; ?>!</h1>
+      <div class="d-flex align-items-center div-info">
+        <h1>Olá, <?php echo $_SESSION["nome"]; ?>!</h1> 
+        <i class="bi bi-info-circle info" data-bs-toggle="offcanvas" data-bs-target="#info-container" aria-controls="info-container"></i>
+      </div>
+
       <p>Espero que esteja bem. Vamos dar uma olhada nas suas finanças? Veja como está seu progresso e continue no caminho certo para alcançar suas metas!</p>
+
+      <!-- Info -->
+      <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="info-container" aria-labelledby="tituloInfo">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="tituloInfo">Home</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <p>Try scrolling the rest of the page to see this option in action.</p>
+        </div>
+      </div>
+
     </div>
     <div class="col-md-4 text-center ideia">
       <img src="./images/lamp.svg" alt="lampada" class="lampada">
-      <h5 style="font-weight: 600;">Dica do Dia</h5>
-      <p>Registre cada gasto, cada centavo conta!</p>
+      <h5 style="font-weight: 600;">Dica</h5>
+      <p id="dica-home">Registre cada gasto, cada centavo conta!</p>
     </div>
   </div>
   <div class="row column-gap-4">
@@ -57,5 +73,3 @@
     </div>
   </div>
 </div>
-
-        

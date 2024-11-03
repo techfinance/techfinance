@@ -3,9 +3,24 @@ if(!isset($_SESSION["id_usuario"])){
   session_start();
 }
 ?>
+<!-- Info -->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="info-container" aria-labelledby="tituloInfo">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="tituloInfo">Sonhos de Consumo</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!-- Info texto -->
+        <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+</div>
+
 <div class="container-fluid d-flex flex-wrap p-2">
     <div class="sonhos">
-        <h1>Sonhos de Consumo</h1>
+        <div class="d-flex align-items-center div-info">
+            <h1>Sonhos de Consumo</h1>
+            <i class="bi bi-info-circle info" data-bs-toggle="offcanvas" data-bs-target="#info-container" aria-controls="info-container"></i>
+        </div>
         <p>Acompanhe o progresso dos seus sonhos. Pequenas mudanças hoje podem fazer uma grande diferença amanhã!</p>
 
         <ol class="list-group" id="list-sonhos">

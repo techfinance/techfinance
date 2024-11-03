@@ -44,6 +44,7 @@
     ?>  
     
     <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
     <script src="js/registros.js"></script>
     <script src="js/metas.js"></script>
     <script src="js/sonhos.js"></script>

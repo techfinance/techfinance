@@ -30,7 +30,7 @@
                 $classPercent = "primary-green";
             } else if($percentRest < 70 && $percentRest >= 25){
                 $classPercent = "bg-warning";
-            } else {
+            } else if($percentRest < 25) {
                 $classPercent = "bg-secondary-red";
             }
 
@@ -153,9 +153,25 @@
         <?php  }
         }  ?>
 
-        <a href="#" data-bs-toggle="modal" data-bs-target="#metas-concluidas" id="botao-metas-concluidas">
-        Metas Finalizadas
-        </a>
+
+        <button type="button" class="btn-messages btn position-relative" data-bs-toggle="modal" data-bs-target="#metas-concluidas">
+        Finalizadas
+            <?php 
+                $count = 0;
+                foreach($dados as $key){
+                    if($key["META_STATUS"] !== "progresso") $count++;
+                }
+                if($count > 0) { 
+            ?>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notifications">
+                    <?= $count ?>
+                    <span class="visually-hidden">unread messages</span>
+                </span>
+            <?php
+                }
+            ?>
+            
+        </button>
         <!-- Modal concluidas -->
         <div class="modal fade" id="metas-concluidas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog scrollable">
