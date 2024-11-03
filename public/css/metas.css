@@ -66,6 +66,12 @@
     margin: 0;
 }
 
+#meta-logo {
+    color: var(--primary-green);
+    font-size: 48px;
+    padding-bottom: 10px;
+}
+
 @media only screen and (min-width: 1000px) {
     .metas {
         flex: 1;

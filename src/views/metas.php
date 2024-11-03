@@ -32,6 +32,9 @@ if(!isset($_SESSION["id_usuario"])){
 
     <!-- registrar metas -->
     <div class="registro-metas">
+        <div id="meta-logo">
+            <i class="bi bi-bullseye"></i>
+        </div>
         <h3>Registre sua nova meta</h3>
         <p>Cada meta é uma conquista no seu caminho financeiro!</p>
 

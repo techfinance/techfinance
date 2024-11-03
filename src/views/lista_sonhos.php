@@ -11,6 +11,7 @@
     $dados = $sonhos->buscarSonho($id_usuario);
     $valor_carteira = $sonhos->valorCarteira($id_usuario);
 
+    if(count($dados) > 0){
     for($i = 0; $i < count($dados); $i++){
         $id_sonho = $dados[$i]["ID_SONHO"];
         $valor = $dados[$i]["VALOR"];
@@ -160,4 +161,8 @@
             </div>
         </div>
     </div>
-</div>
+</div> <?php
+} else {
+    echo "<p>Não há registros</p>";
+}
+?>
