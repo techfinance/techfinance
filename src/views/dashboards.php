@@ -5,7 +5,10 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <p>Try scrolling the rest of the page to see this option in action.</p>
+        <p>Nesta tela, você encontrará dois gráficos que ajudam a recapitular seus últimos registros e a identificar áreas de melhoria para alcançar seus objetivos financeiros.</p>
+        <p>O primeiro gráfico exibe o valor total das entradas e saídas por mês nos últimos seis meses, oferecendo uma visão clara do seu fluxo financeiro ao longo do tempo. O segundo gráfico detalha os gastos nos últimos 30 dias, organizados por categoria, para que você possa entender melhor onde está investindo seu dinheiro.</p>
+        <p>Além disso, você tem a opção de exportar esses gráficos para PDF, permitindo que você os guarde para consultas futuras e acompanhe seu progresso de maneira prática.</p>
+        <p>Utilize essas informações para ajustar suas estratégias financeiras e continuar avançando em direção às suas metas!</p>
     </div>
 </div>
 

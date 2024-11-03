@@ -21,7 +21,9 @@ if(!isset($_SESSION["id_usuario"])){
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <p>Try scrolling the rest of the page to see this option in action.</p>
+            <p>Nesta tela, você pode criar e gerenciar suas metas financeiras para controlar seus gastos de acordo com categorias específicas. Para definir uma meta, basta escolher a categoria desejada (todas as categorias que você já criou estarão disponíveis), inserir o valor máximo que deseja atingir, e especificar as datas de início e término da meta, além de fornecer uma breve descrição.</p>
+            <p>Ao criar suas metas, você poderá visualizar o progresso de cada uma delas em uma lista, com uma barra que indica quanto você já alcançou. Além disso, poderá acessar facilmente suas metas concluídas e aquelas que ainda estão em andamento.</p>
+            <p>Utilize essa funcionalidade para manter suas finanças sob controle e atingir seus objetivos com mais eficiência!</p>
         </div>
     </div>
 

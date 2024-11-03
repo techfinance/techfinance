@@ -24,7 +24,9 @@ if(!isset($_SESSION["id_usuario"])){
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <p>Try scrolling the rest of the page to see this option in action.</p>
+          <p>Nesta tela, você pode registrar suas entradas e saídas financeiras de forma simples e prática. Para as saídas, basta informar o nome, o valor e selecionar uma categoria; se preferir, você também pode criar uma nova categoria. Para as entradas, você só precisa especificar o nome e o valor.</p>
+          <p>Ao lado, você encontrará uma tabela com os seus últimos registros. Utilize a barra de pesquisa para filtrar por entradas ou saídas, por categoria ou por data, facilitando a visualização dos seus dados. Vale lembrar que você só pode excluir o último registro realizado.</p>
+          <p>Explore esta funcionalidade para manter suas finanças organizadas e sempre atualizadas!</p>
         </div>
       </div>
 

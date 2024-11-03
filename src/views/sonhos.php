@@ -11,7 +11,10 @@ if(!isset($_SESSION["id_usuario"])){
     </div>
     <div class="offcanvas-body">
         <!-- Info texto -->
-        <p>Try scrolling the rest of the page to see this option in action.</p>
+        <p>Nesta tela, você pode criar e gerenciar seus sonhos de consumo, que são objetivos a longo prazo, como a compra de um carro ou de uma casa.</p>
+        <p>Para registrar um sonho, basta inserir o nome do objetivo, o valor que deseja atingir e a data em que pretende concluir essa meta. O sistema levará em consideração o saldo da sua carteira e calculará automaticamente as parcelas mensais que você precisará guardar para alcançar seu sonho dentro do prazo estabelecido.</p>
+        <p>Assim como nas metas, você terá a opção de visualizar os sonhos que já foram concluídos, permitindo acompanhar seu progresso e celebrar suas conquistas.</p>
+        <p>Use esta funcionalidade para transformar seus sonhos em realidade e planejar seu futuro financeiro com confiança!</p>
     </div>
 </div>
 

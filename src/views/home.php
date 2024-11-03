@@ -17,7 +17,8 @@
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <p>Try scrolling the rest of the page to see this option in action.</p>
+          <p>Olá, seja bem-vindo! Esta é a página inicial do seu aplicativo. Aqui, você encontrará as informações essenciais sobre o seu progresso, incluindo o saldo da sua carteira, a quantidade de metas e sonhos em andamento.</p>
+          <p>Sinta-se à vontade para explorar as diversas funcionalidades do aplicativo. Descubra como acompanhar suas finanças, definir novas metas e visualizar seu progresso de forma intuitiva. Estamos aqui para ajudar você a alcançar seus objetivos financeiros!</p>
         </div>
       </div>
 
