@@ -118,7 +118,7 @@ date_default_timezone_set('America/Sao_Paulo');
                     </div>
                     <div class="modal-footer border-0">
                         
-                        <input type="submit" class="btn btn-despesa" value="Registrar" form="form-saida"></input>
+                        <input type="submit" class="btn btn-despesa" value="Registrar" form="form-saida" style="margin: 0;"></input>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@ date_default_timezone_set('America/Sao_Paulo');
                     <div class="negado-entrada" hidden>Preencha todos os campos!</div>
                     </div>
                     <div class="modal-footer border-0">
-                        <input type="submit" class="btn" value="Registrar" form="form-entrada"></input>
+                        <input type="submit" class="btn" value="Registrar" form="form-entrada" style="margin: 0;"></input>
                         <!--<button type="button" class="btn" form="form-entrada" id="registro-entrada">Registrar</button>-->
                     </div>
                 </div>
