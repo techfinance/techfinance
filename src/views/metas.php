@@ -2,6 +2,7 @@
 if(!isset($_SESSION["id_usuario"])){
   session_start();
 }
+date_default_timezone_set('America/Sao_Paulo');
 ?>
 <div class="container-fuid d-flex flex-wrap p-2 container-metas">
 

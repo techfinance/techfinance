@@ -6,7 +6,7 @@
         <p class="fs-3" style="font-weight: 500;">Já possui uma conta? <a href="#" class="cadastro-go" onclick="getPage('login')">Login</a></p>
         <div class="line-style"></div>
         <p class="p-banner" >Tenha o controle total do seu dinheiro de maneira simples e prática. Registre suas despesas, acompanhe seus objetivos e tome decisões financeiras mais inteligentes. Comece agora!</p>
-        <button type="button" class="btn">Leia mais</button>
+        <!-- <button type="button" class="btn">Leia mais</button> -->
     </div>
     <div class="form">
         <h1>Cadastro</h1>

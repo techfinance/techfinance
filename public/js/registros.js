@@ -59,6 +59,7 @@ function formSaida() {
         let categoriaDespesa = categoria.value;
         let valor = document.querySelector("#valor").value;
         let nomeCategoria = document.querySelector("#textCategoria");
+        let dataDespesa = document.querySelector("#data-despesa").value;
         let tipoCategoria = categoria.options[categoria.selectedIndex]?.dataset.tipo;
         let idCategoria = categoria.options[categoria.selectedIndex]?.dataset.id;
 
@@ -78,7 +79,7 @@ function formSaida() {
         document.querySelector("#valor").value = "";
         categoriaNome.value = "";
 
-        await ajaxGastos(nomeDespesa, categoriaDespesa, valor, tipoCategoria, idCategoria).finally(async () => {
+        await ajaxGastos(nomeDespesa, categoriaDespesa, valor, dataDespesa, tipoCategoria, idCategoria).finally(async () => {
             let response = await fetch("/../src/controllers/controle_tabela.php");
             let data = await response.text();
 
@@ -96,10 +97,11 @@ function formEntrada() {
 
         const nomeEntrada = document.querySelector("#nomeEntrada").value;
         const valorEntrada = document.querySelector("#valorEntrada").value;
+        const dataEntrada = document.querySelector("#data-entrada").value;
         document.querySelector("#nomeEntrada").value = "";
         document.querySelector("#valorEntrada").value = "";
 
-        ajaxEntrada(nomeEntrada, valorEntrada).finally(async () => {
+        ajaxEntrada(nomeEntrada, valorEntrada, dataEntrada).finally(async () => {
             let response = await fetch("/../src/controllers/controle_tabela.php");
             let data = await response.text();
 
@@ -123,11 +125,12 @@ async function ajaxCreateCategoria(categoriaNome){
 }
 
 
-async function ajaxGastos(nomeDespesa, categoriaDespesa, valor, tipo, id) {
+async function ajaxGastos(nomeDespesa, categoriaDespesa, valor, dataDespesa, tipo, id) {
     let response = await fetch("/../src/controllers/controle_gasto.php?" + new URLSearchParams({
         nome: nomeDespesa,
         categoria: categoriaDespesa,
         valor: valor,
+        data: dataDespesa,
         tipo: tipo,
         id: id,
     }).toString());
@@ -142,10 +145,11 @@ async function ajaxGastos(nomeDespesa, categoriaDespesa, valor, tipo, id) {
 }
 
 
-async function ajaxEntrada(nomeEntrada, valor) {
+async function ajaxEntrada(nomeEntrada, valor, data) {
     let response = await fetch("/../src/controllers/controle_entrada.php?" + new URLSearchParams({
         nome: nomeEntrada,
-        valor: valor
+        valor: valor,
+        data: data,
     }).toString());
 
     if(!response.ok)

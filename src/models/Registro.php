@@ -2,19 +2,20 @@
     class Registro extends Carteira {
 
         //cadastra saida
-        public function cadastrarDespesa($tipo, $categoria, $valor, $tipoCategoria, $idCategoria, $id) {
+        public function cadastrarDespesa($tipo, $categoria, $valor, $data, $tipoCategoria, $idCategoria, $id) {
             $sql = $this->pdo->query("SELECT id_carteira FROM carteira WHERE usuario_id_usuario = $id");
             $id_carteira = $sql->fetch();
             
             if($tipoCategoria == "padrao"){
-                $sql = $this->pdo->prepare("INSERT INTO saida (tipo, categoria, valor, usuario_id_usuario, carteira_id_carteira, categoria_id_categoria) VALUES (:t, :c, :v, :i, :f, :g)");
+                $sql = $this->pdo->prepare("INSERT INTO saida (tipo, categoria, valor, saida_data, usuario_id_usuario, carteira_id_carteira, categoria_id_categoria) VALUES (:t, :c, :v, :s, :i, :f, :g)");
             } else {
-                $sql = $this->pdo->prepare("INSERT INTO saida (tipo, categoria, valor, usuario_id_usuario, carteira_id_carteira, categoriau_id_categoriau) VALUES (:t, :c, :v, :i, :f, :g)");
+                $sql = $this->pdo->prepare("INSERT INTO saida (tipo, categoria, valor, saida_data, usuario_id_usuario, carteira_id_carteira, categoriau_id_categoriau) VALUES (:t, :c, :v, :s, :i, :f, :g)");
             }
             
             $sql->bindValue(":t", $tipo);
             $sql->bindValue(":c", $categoria);
             $sql->bindValue(":v", $valor);
+            $sql->bindValue(":s", $data);
             $sql->bindValue(":i", $id);
             $sql->bindValue(":f", $id_carteira["id_carteira"]);
             $sql->bindValue(":g", $idCategoria);
@@ -23,13 +24,14 @@
         }
 
         //cadastra entrada
-        public function cadastrarEntrada($nome, $valor, $id) {
+        public function cadastrarEntrada($nome, $valor, $data, $id) {
             $sql = $this->pdo->query("SELECT id_carteira FROM carteira WHERE usuario_id_usuario = $id");
             $id_carteira = $sql->fetch();
 
-            $sql = $this->pdo->prepare("INSERT INTO entrada (nome_entr, valor_entr, usuario_id_usuario, carteira_id_carteira) VALUES (:n, :v, :i, :f)");
+            $sql = $this->pdo->prepare("INSERT INTO entrada (nome_entr, valor_entr, entr_data, usuario_id_usuario, carteira_id_carteira) VALUES (:n, :v, :ed, :i, :f)");
             $sql->bindValue(":n", $nome);
             $sql->bindValue(":v", $valor);
+            $sql->bindValue(":ed", $data);
             $sql->bindValue(":i", $id);
             $sql->bindValue(":f", $id_carteira["id_carteira"]);
             $sql->execute();

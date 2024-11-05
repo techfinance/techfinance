@@ -2,6 +2,7 @@
 if(!isset($_SESSION["id_usuario"])){
   session_start();
 }
+date_default_timezone_set('America/Sao_Paulo');
 ?>
 <div class="container-fluid d-flex flex-wrap p-2 flex-registros">
     <div class="text-registros">
@@ -108,6 +109,10 @@ if(!isset($_SESSION["id_usuario"])){
                               <input type="number" step="0.01" min="0" class="form-control form-despesa-input" aria-label="Value" aria-describedby="addon-wrapping" id="valor" required>
                             </div>
                           </div>
+                          <div class="mb-3">
+                            <label for="data-despesa" class="form-label">Data</label>
+                            <input type="date" class="form-control form-despesa-input" id="data-despesa" max="<?= date('Y-m-d'); ?>" value="<?= date('Y-m-d'); ?>" required>
+                          </div>
                         </form>
                         <div class="sucesso-registro text-center" style="color: #DE6771" hidden>Despesa registrada!</div>
                     </div>
@@ -141,6 +146,10 @@ if(!isset($_SESSION["id_usuario"])){
                             <input type="number" step="0.01" min="0" class="form-control form-despesa-input" aria-label="Value" aria-describedby="addon-wrapping" id="valorEntrada" required>
                           </div>
                         </div>
+                        <div class="mb-3">
+                            <label for="data-entrada" class="form-label">Data</label>
+                            <input type="date" class="form-control form-despesa-input" id="data-entrada" max="<?= date('Y-m-d'); ?>" value="<?= date('Y-m-d'); ?>" required>
+                          </div>
                     </form>
                     <div class="sucesso-entrada text-center" hidden>Entrada registrada!</div>
                     <div class="negado-entrada" hidden>Preencha todos os campos!</div>

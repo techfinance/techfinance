@@ -8,6 +8,7 @@
     background-color: var(--primary-blue);
     color: white;
     text-align: justify;
+    z-index: 5000;
 }
 
 h1 {font-weight: 600}

@@ -8,13 +8,14 @@
     if(isset($_GET["nome"])){
         $tipo = addslashes($_GET["nome"]);
         $valor = addslashes($_GET["valor"]);
+        $data = addslashes($_GET["data"]);
 
-        if(!empty($tipo) && !empty($valor)){
+        if(!empty($tipo) && !empty($valor) && !empty($data)){
             $query = new Registro("tech_finance1", "localhost", "root", "");
             $id = $_SESSION["id_usuario"];
 
             if($query->erro == ""){
-                if($query->cadastrarEntrada($tipo, $valor, $id)){
+                if($query->cadastrarEntrada($tipo, $valor, $data, $id)){
                     $valorAtual = $query->valorCarteira($id);
                     $newValor = $valorAtual + $valor;
                     $query->updateCarteira($id, $newValor);
