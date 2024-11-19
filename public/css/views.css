@@ -11,6 +11,17 @@
     z-index: 5000;
 }
 
+.card {
+    background-color: rgba(163, 163, 163, 0.127);
+    border: none;
+    min-width: 200px;
+}
+
+.cards {
+    margin-block: 10px;
+    gap: 150px;
+}
+
 h1 {font-weight: 600}
 .info {cursor: pointer}
 .container-config {max-width: 350px}
@@ -19,5 +30,8 @@ h1 {font-weight: 600}
 @media only screen and (max-width: 600px) {
     .grafico {
         margin-bottom: 25px;
+    }
+    .cards {
+        gap: 30px;
     }
 }

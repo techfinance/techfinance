@@ -48,7 +48,7 @@
         }
 
         //retorna as saídas por mês
-        public function getDespesaPorMes($id_usuario) {
+        public function getDespesaPorMes($id_usuario, $qtd) {
             $this->pdo->query("SET lc_time_names = 'pt_BR';");
 
             $sql = $this->pdo->prepare("
@@ -59,7 +59,7 @@
                     saida 
                 WHERE 
                     usuario_id_usuario = :id 
-                    AND saida_data >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
+                    AND saida_data >= DATE_SUB(CURDATE(), INTERVAL :qt MONTH)
                 GROUP BY 
                     mes_nome 
                 ORDER BY 
@@ -67,6 +67,7 @@
             ");
             
             $sql->bindValue(":id", $id_usuario);
+            $sql->bindValue(":qt", $qtd);
             $sql->execute();
         
             return $sql->fetchAll(PDO::FETCH_ASSOC);

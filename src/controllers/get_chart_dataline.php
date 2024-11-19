@@ -9,7 +9,7 @@ session_start();
 $id = $_SESSION["id_usuario"];
 $registro = new Registro("tech_finance1", "localhost", "root", "");
 
-$dados = $registro->getDespesaPorMes($id);
+$dados = $registro->getDespesaPorMes($id, 6);
 $dadosEntr = $registro->getEntradaPorMes($id);
 
 $data = [

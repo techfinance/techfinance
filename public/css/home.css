@@ -16,7 +16,7 @@ h3 {
     margin-bottom: 30px;
 }
 
-#valor-carteira {
+.valor-carteira {
     font-size: 18px;
     font-weight: 700;
     font-family: "Montserrat";
@@ -27,7 +27,8 @@ h3 {
 }
 
 .carteira {
-    background-color: rgba(128, 128, 128, 0.127);
+    background-color: rgba(163, 163, 163, 0.127);
+    border: none;;
     padding: 20px;
     border-radius: 15px;
 }
@@ -37,7 +38,7 @@ h3 {
 }
 
 .negative {
-    color: var(--primary-red);
+    color: var(--secondary-red);
 }
 
 .metas-home {
